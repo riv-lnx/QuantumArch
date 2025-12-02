@@ -1,0 +1,77 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 34,
+    "modules-left": [
+        "clock",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "network",
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "tray"
+    ],
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50
+    },
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate",
+        "format": "{icon}",
+        "format-icons": {
+            "1": "I",
+            "2": "II",
+            "3": "III",
+            "4": "IV",
+            "5": "V"
+        }
+    },
+    "tray": {
+        "icon-size": 13,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:\uf017 %H:%M  \uf073 %a, %e %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "cpu": {
+        "format": "\uf2db {usage}%",
+        "tooltip": false,
+        "interval": 1
+    },
+    "memory": {
+        "format": "\uf0c9 {}%"
+    },
+    "network": {
+        "format-wifi": "\uf1eb  {essid}",
+        "format-ethernet": "\uf0c1  Eth",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "\u26a0 Disconnected",
+        "tooltip-format": "{ifname} via {gwaddr}"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "\uf026 Muted",
+        "format-icons": {
+            "headphone": "\uf025",
+            "hands-free": "\uf590",
+            "headset": "\uf590",
+            "phone": "\uf095",
+            "portable": "\uf095",
+            "car": "\uf1b9",
+            "default": ["\uf026", "\uf027", "\uf028"]
+        },
+        "on-click": "pavucontrol"
+    }
+}

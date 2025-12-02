@@ -1,0 +1,95 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(5, 5, 5, 0.85); /* Gelap Transparan */
+    color: #d0d0d0;
+    border-bottom: 2px solid #33ccff; /* Garis Neon Cyan di bawah */
+}
+
+#window {
+    font-weight: bold;
+    color: #33ccff;
+}
+
+/* --- WORKSPACES --- */
+#workspaces {
+    background: #151515;
+    margin: 4px 4px;
+    padding: 0 5px;
+    border-radius: 6px;
+    border: 1px solid #33ccff; /* Border Cyan */
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: #ffffff;
+    border-radius: 6px;
+}
+
+#workspaces button.active {
+    color: #000000;
+    background: #33ccff; /* Aktif jadi Cyan Terang */
+    font-weight: bold;
+}
+
+#workspaces button:hover {
+    background: rgba(51, 204, 255, 0.2);
+    color: #33ccff;
+}
+
+/* --- MODULES RIGHT --- */
+#clock,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#tray {
+    background: #151515;
+    padding: 0 12px;
+    margin: 4px 3px;
+    border-radius: 6px;
+    border: 1px solid #505050; /* Border abu-abu halus */
+    color: #ffffff;
+}
+
+#clock {
+    color: #33ccff; /* Cyan */
+    border-color: #33ccff;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#cpu {
+    color: #ff5555; /* Merah */
+    border-bottom: 2px solid #ff5555;
+}
+
+#memory {
+    color: #bd93f9; /* Ungu */
+    border-bottom: 2px solid #bd93f9;
+}
+
+#network {
+    color: #00ff99; /* Hijau Neon */
+    border-bottom: 2px solid #00ff99;
+}
+
+#pulseaudio {
+    color: #f1fa8c; /* Kuning */
+    border-bottom: 2px solid #f1fa8c;
+}
+
+#pulseaudio.muted {
+    background-color: #ff5555;
+    color: #000000;
+}
+
+#tray {
+    background-color: #151515;
+}
