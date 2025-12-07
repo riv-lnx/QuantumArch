@@ -1,107 +1,81 @@
-/* --- GLOBAL SETTINGS --- */
+/* QuantumArch Waybar CSS - macOS-like islands */
+
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "JetBrainsMono Nerd Font";
-    font-weight: bold;
-    font-size: 14px;
-    min-height: 0;
+    font-family: "JetBrains Mono", "JetBrainsMono Nerd Font", "Fira Code", sans-serif;
+    font-size: 12px;
 }
 
-window#waybar {
-    background: transparent; /* Latar belakang utama transparan */
-    color: #cdd6f4;
+/* main container */
+#waybar {
+    margin: 10px;
+    padding: 4px;
+    border-radius: 12px;
+    background: rgba(12,12,14,0.45);
+    backdrop-filter: blur(8px) saturate(120%);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
 }
 
-tooltip {
-    background: #1e1e2e;
-    border-radius: 10px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #313244;
-}
-
-/* --- MODULE STYLES (THE "ISLANDS") --- */
-
-/* Launcher (Menu Start) */
+/* islands */
 #custom-launcher {
-    background-color: #89b4fa; /* Biru Mac */
-    color: #11111b;
-    border-radius: 15px;
-    padding: 5px 15px;
+    background-color: #89b4fa;
+    color: #0b0b0f;
+    border-radius: 12px;
+    padding: 6px 12px;
     margin-right: 10px;
 }
 
-/* Workspaces (Kiri) */
 #workspaces {
-    background-color: #1e1e2e;
-    border-radius: 15px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: rgba(255,255,255,0.02);
+    padding: 6px;
+    border-radius: 12px;
     margin-right: 10px;
-    padding: 5px 5px;
-    border: 1px solid #313244;
+    border: 1px solid rgba(49,50,68,0.6);
 }
 
 #workspaces button {
-    padding: 0 8px;
-    color: #585b70;
-    border-radius: 10px;
+    padding: 6px 10px;
+    color: #7f8296;
+    border-radius: 9px;
+    background: transparent;
+    border: none;
 }
 
 #workspaces button.active {
-    color: #cdd6f4; /* Putih saat aktif */
-    background-color: #313244;
+    color: #e8fefe;
+    background: linear-gradient(135deg, rgba(51,204,255,0.10), rgba(0,255,153,0.04));
+    border: 1px solid rgba(51,204,255,0.12);
+    transform: translateY(-1px);
 }
 
-#workspaces button:hover {
-    background-color: #45475a;
-}
-
-/* Hardware Info (CPU/RAM) */
-#cpu, #memory {
-    background-color: #1e1e2e;
-    color: #fab387; /* Peach/Orange */
-    border-radius: 15px;
-    padding: 5px 15px;
+#cpu, #memory, #network, #pulseaudio, #battery {
+    background: rgba(255,255,255,0.02);
+    border-radius: 12px;
+    padding: 6px 12px;
     margin-right: 10px;
-    border: 1px solid #313244;
+    border: 1px solid rgba(49,50,68,0.6);
 }
 
-/* Clock (Tengah - Besar) */
 #clock {
-    background-color: #1e1e2e;
-    color: #cdd6f4;
-    border-radius: 15px;
-    padding: 5px 20px;
-    margin: 0 10px;
-    border: 2px solid #89b4fa; /* Border Biru agar menonjol */
-}
-
-/* Kanan (Network, Audio, Battery) */
-#network, #pulseaudio, #battery {
-    background-color: #1e1e2e;
-    color: #a6e3a1; /* Hijau Soft */
-    border-radius: 15px;
-    padding: 5px 15px;
-    margin-left: 10px;
-    border: 1px solid #313244;
-}
-
-#pulseaudio {
-    color: #f9e2af; /* Kuning Soft */
+    padding: 6px 18px;
+    border-radius: 12px;
+    border: 2px solid rgba(137,180,250,0.12);
+    background: rgba(255,255,255,0.01);
+    color: #cbd5ff;
 }
 
 #tray {
-    background-color: #1e1e2e;
-    border-radius: 15px;
-    padding: 5px 15px;
-    margin-left: 10px;
+    padding: 6px 10px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.01);
+    border: 1px solid rgba(49,50,68,0.6);
 }
 
-/* Tombol Power (Ujung Kanan) */
 #custom-power {
-    background-color: #f38ba8; /* Merah Mac */
-    color: #11111b;
-    border-radius: 15px;
-    padding: 5px 15px;
-    margin-left: 10px;
+    background: #f38ba8;
+    color: #0b0b0f;
+    border-radius: 12px;
+    padding: 6px 12px;
 }
