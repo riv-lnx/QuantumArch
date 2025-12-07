@@ -1,0 +1,71 @@
+/* =========================================================
+   QuantumArch ROFI Theme (macOS-like + neon blue)
+   Clean • Modern • Semi-transparent glass
+   ========================================================= */
+
+* {
+    font: "JetBrainsMono Nerd Font 12";
+    background: transparent;
+    foreground: #d7e1ff;
+}
+
+window {
+    width: 40%;
+    border-radius: 18px;
+    padding: 12px;
+    background-color: rgba(12,12,14,0.55);
+    backdrop-filter: blur(16px) saturate(160%);
+    border: 2px solid rgba(51,204,255,0.35);
+}
+
+inputbar {
+    background-color: rgba(0,0,0,0.25);
+    border-radius: 12px;
+    padding: 8px 12px;
+    border: 1px solid rgba(51,204,255,0.25);
+    margin-bottom: 10px;
+}
+
+entry {
+    background: transparent;
+    expand: true;
+    text-color: #e9fefe;
+    placeholder: "Search…";
+}
+
+prompt {
+    text-color: #33ccff;
+    padding: 0px 10px;
+}
+
+listview {
+    padding: 8px;
+    background: transparent;
+    spacing: 6px;
+    fixed-height: false;
+}
+
+element {
+    background: rgba(255,255,255,0.03);
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+}
+
+element-icon {
+    size: 22px;
+}
+
+element selected {
+    background: rgba(51,204,255,0.20);
+    border: 1px solid rgba(51,204,255,0.45);
+    text-color: #e9fefe;
+}
+
+element-text {
+    text-color: #d7e1ff;
+}
+
+element-text selected {
+    text-color: #e9fefe;
+}
