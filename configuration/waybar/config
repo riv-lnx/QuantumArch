@@ -1,15 +1,11 @@
 {
     "layer": "top",
     "position": "top",
-    "mod": "dock",
-    "exclusive": true,
-    "passthrough": false,
-    "gtk-layer-shell": true,
-    "height": 0,
+    "height": 36,
     "margin-top": 10,
     "margin-left": 10,
     "margin-right": 10,
-    
+
     "modules-left": [
         "custom/launcher",
         "hyprland/workspaces",
@@ -33,15 +29,15 @@
         "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
-            "default": "\uf111", 
-            "active": "\uf192", 
+            "default": "\uf111",
+            "active": "\uf192",
             "urgent": "\uf06a"
         },
         "persistent-workspaces": {
-            "*": 5 
+            "*": 5
         }
     },
-    
+
     "custom/launcher": {
         "format": "\uf303",
         "on-click": "wofi --show drun",
@@ -55,11 +51,12 @@
     },
 
     "memory": {
-        "format": "\uf538 {}%"
+        "format": "\uf538 {used_percent}%",
+        "tooltip": false
     },
 
     "clock": {
-        "format": "{:\uf017  %H:%M   \uf073  %a, %d %b}",
+        "format": "{:%H:%M   %a, %d %b}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
@@ -74,21 +71,12 @@
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-muted": "\uf6a9 Muted",
-        "format-icons": {
-            "headphone": "\uf025",
-            "hands-free": "\uf590",
-            "headset": "\uf590",
-            "phone": "\uf095",
-            "portable": "\uf095",
-            "car": "\uf1b9",
-            "default": ["\uf026", "\uf027", "\uf028"]
-        },
         "on-click": "pavucontrol"
     },
-    
+
     "tray": {
-        "icon-size": 15,
-        "spacing": 10
+        "icon-size": 18,
+        "spacing": 8
     },
 
     "custom/power": {
