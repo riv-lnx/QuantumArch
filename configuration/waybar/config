@@ -1,37 +1,36 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 36,
+    "height": 34,
     "margin-top": 10,
     "margin-left": 10,
     "margin-right": 10,
 
     "modules-left": [
         "custom/launcher",
-        "hyprland/workspaces",
-        "cpu",
-        "memory"
+        "hyprland/workspaces"
     ],
+
     "modules-center": [
         "clock"
     ],
+
     "modules-right": [
-        "tray",
         "network",
         "pulseaudio",
         "battery",
+        "tray",
         "custom/power"
     ],
 
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
-            "default": "\uf111",
-            "active": "\uf192",
-            "urgent": "\uf06a"
+            "default": "",
+            "active": "",
+            "urgent": ""
         },
         "persistent-workspaces": {
             "*": 5
@@ -39,39 +38,30 @@
     },
 
     "custom/launcher": {
-        "format": "\uf303",
-        "on-click": "wofi --show drun",
-        "tooltip": false
-    },
-
-    "cpu": {
-        "format": "\uf2db {usage}%",
-        "tooltip": false,
-        "interval": 2
-    },
-
-    "memory": {
-        "format": "\uf538 {used_percent}%",
+        "format": "",
+        "on-click": "rofi -show drun",
         "tooltip": false
     },
 
     "clock": {
-        "format": "{:%H:%M   %a, %d %b}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "format": "{:%H:%M  %a, %d %b}",
+        "tooltip-format": "{:%A, %d %B %Y}"
     },
 
     "network": {
-        "format-wifi": "\uf1eb  {essid}",
-        "format-ethernet": "\uf0c1  Eth",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "\u26a0 Offline",
-        "tooltip-format": "{ifname} via {gwaddr}"
+        "format-wifi": " {essid}",
+        "format-ethernet": " ETH",
+        "format-disconnected": " Offline"
     },
 
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": "\uf6a9 Muted",
-        "on-click": "pavucontrol"
+        "format-muted": "󰝟 Muted"
+    },
+
+    "battery": {
+        "format": "{capacity}% ({timeToEmpty})",
+        "tooltip": true
     },
 
     "tray": {
@@ -80,8 +70,7 @@
     },
 
     "custom/power": {
-        "format": "\uf011",
-        "on-click": "wlogout",
-        "tooltip": false
+        "format": "",
+        "on-click": "wlogout"
     }
 }
