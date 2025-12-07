@@ -5,64 +5,75 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 34,
+    "height": 0,
+    "margin-top": 10,
+    "margin-left": 10,
+    "margin-right": 10,
+    
     "modules-left": [
-        "clock",
-        "hyprland/workspaces"
+        "custom/launcher",
+        "hyprland/workspaces",
+        "cpu",
+        "memory"
     ],
     "modules-center": [
-        "hyprland/window"
+        "clock"
     ],
     "modules-right": [
+        "tray",
         "network",
-        "cpu",
-        "memory",
         "pulseaudio",
-        "tray"
+        "battery",
+        "custom/power"
     ],
-    "hyprland/window": {
-        "format": "{}",
-        "max-length": 50
-    },
+
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
-            "1": "I",
-            "2": "II",
-            "3": "III",
-            "4": "IV",
-            "5": "V"
+            "default": "\uf111", 
+            "active": "\uf192", 
+            "urgent": "\uf06a"
+        },
+        "persistent-workspaces": {
+            "*": 5 
         }
     },
-    "tray": {
-        "icon-size": 13,
-        "spacing": 10
+    
+    "custom/launcher": {
+        "format": "\uf303",
+        "on-click": "wofi --show drun",
+        "tooltip": false
     },
-    "clock": {
-        "format": "{:\uf017 %H:%M  \uf073 %a, %e %b}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
+
     "cpu": {
         "format": "\uf2db {usage}%",
         "tooltip": false,
-        "interval": 1
+        "interval": 2
     },
+
     "memory": {
-        "format": "\uf0c9 {}%"
+        "format": "\uf538 {}%"
     },
+
+    "clock": {
+        "format": "{:\uf017  %H:%M   \uf073  %a, %d %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
     "network": {
         "format-wifi": "\uf1eb  {essid}",
         "format-ethernet": "\uf0c1  Eth",
         "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "\u26a0 Disconnected",
+        "format-disconnected": "\u26a0 Offline",
         "tooltip-format": "{ifname} via {gwaddr}"
     },
+
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": "\uf026 Muted",
+        "format-muted": "\uf6a9 Muted",
         "format-icons": {
             "headphone": "\uf025",
             "hands-free": "\uf590",
@@ -73,5 +84,16 @@
             "default": ["\uf026", "\uf027", "\uf028"]
         },
         "on-click": "pavucontrol"
+    },
+    
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+
+    "custom/power": {
+        "format": "\uf011",
+        "on-click": "wlogout",
+        "tooltip": false
     }
 }
