@@ -1,0 +1,20 @@
+configuration {
+    modi: "drun,run";
+    font: "JetBrainsMono Nerd Font 12";
+    icon-theme: "Papirus-Dark";
+    show-icons: true;
+
+    display-drun:     "Applications";
+    display-run:      "Run";
+
+    drun-display-format: "{icon} {name}";
+
+    theme: "~/.config/rofi/theme.rasi";
+
+    kb-cancel: "Escape,Super+q";
+    kb-accept-entry: "Return,KP_Enter";
+    kb-row-up: "Up,Control+k";
+    kb-row-down: "Down,Control+j";
+
+    matching: "fuzzy";
+}
