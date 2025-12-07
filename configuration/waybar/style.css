@@ -1,81 +1,62 @@
-/* QuantumArch Waybar CSS - macOS-like islands */
+/* ===== QuantumArch macOS-like Waybar ===== */
 
 * {
-    font-family: "JetBrains Mono", "JetBrainsMono Nerd Font", "Fira Code", sans-serif;
+    font-family: "JetBrains Mono", monospace;
     font-size: 12px;
 }
 
-/* main container */
+/* Main bar container */
 #waybar {
-    margin: 10px;
-    padding: 4px;
-    border-radius: 12px;
     background: rgba(12,12,14,0.45);
-    backdrop-filter: blur(8px) saturate(120%);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    backdrop-filter: blur(12px) saturate(150%);
+    margin: 10px;
+    padding: 4px 8px;
+    border-radius: 14px;
 }
 
-/* islands */
+/* Launcher */
 #custom-launcher {
-    background-color: #89b4fa;
-    color: #0b0b0f;
-    border-radius: 12px;
+    background: #89b4fa;
     padding: 6px 12px;
     margin-right: 10px;
+    border-radius: 12px;
+    color: #11111b;
 }
 
+/* Workspaces */
 #workspaces {
     display: flex;
     gap: 8px;
-    align-items: center;
-    background: rgba(255,255,255,0.02);
     padding: 6px;
+    background: rgba(255,255,255,0.02);
     border-radius: 12px;
-    margin-right: 10px;
-    border: 1px solid rgba(49,50,68,0.6);
 }
 
 #workspaces button {
     padding: 6px 10px;
-    color: #7f8296;
     border-radius: 9px;
     background: transparent;
-    border: none;
+    color: #7f8296;
 }
 
 #workspaces button.active {
+    background: rgba(51,204,255,0.2);
+    border: 1px solid rgba(51,204,255,0.3);
     color: #e8fefe;
-    background: linear-gradient(135deg, rgba(51,204,255,0.10), rgba(0,255,153,0.04));
-    border: 1px solid rgba(51,204,255,0.12);
-    transform: translateY(-1px);
 }
 
-#cpu, #memory, #network, #pulseaudio, #battery {
-    background: rgba(255,255,255,0.02);
-    border-radius: 12px;
-    padding: 6px 12px;
-    margin-right: 10px;
-    border: 1px solid rgba(49,50,68,0.6);
-}
-
+/* Clock */
 #clock {
     padding: 6px 18px;
     border-radius: 12px;
-    border: 2px solid rgba(137,180,250,0.12);
-    background: rgba(255,255,255,0.01);
-    color: #cbd5ff;
+    background: rgba(255,255,255,0.02);
+    border: 2px solid rgba(137,180,250,0.3);
 }
 
-#tray {
-    padding: 6px 10px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.01);
-    border: 1px solid rgba(49,50,68,0.6);
-}
-
-#custom-power {
-    background: #f38ba8;
-    color: #0b0b0f;
-    border-radius: 12px;
+/* Modules Right */
+#network, #pulseaudio, #battery, #tray, #custom-power {
     padding: 6px 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.02);
+    margin-left: 10px;
 }
