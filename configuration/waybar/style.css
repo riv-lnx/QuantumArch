@@ -1,62 +1,98 @@
-/* ===== QuantumArch macOS-like Waybar ===== */
+/* ==================================================
+   QuantumArch – macOS Glass Waybar (SAFE VERSION)
+   No unicode • No IDs • 100% Waybar 2025 compatible
+   ================================================== */
 
-{
+* {
     font-family: "JetBrains Mono", monospace;
-    font-size: 12px;
+    font-size: 13px;
+    color: #e6eaf2;
 }
 
-/* Main bar container */
-waybar {
-    background: rgba(12,12,14,0.45);
-    backdrop-filter: blur(12px) saturate(150%);
-    margin: 10px;
-    padding: 4px 8px;
-    border-radius: 14px;
-}
-
-/* Launcher */
-custom-launcher {
-    background: #89b4fa;
-    padding: 6px 12px;
-    margin-right: 10px;
-    border-radius: 12px;
-    color: #11111b;
-}
-
-/* Workspaces */
-workspaces {
-    display: flex;
-    gap: 8px;
-    padding: 6px;
-    background: rgba(255,255,255,0.02);
-    border-radius: 12px;
-}
-
-workspaces button {
+/* ==== MAIN BAR (glass transparency) ==== */
+window > box {
+    background-color: rgba(20, 20, 22, 0.35);
+    backdrop-filter: blur(18px) saturate(180%);
+    border-radius: 16px;
     padding: 6px 10px;
-    border-radius: 9px;
-    background: transparent;
-    color: #7f8296;
+    margin: 10px;
+    border: 1px solid rgba(200,200,200,0.10);
 }
 
-workspaces button.active {
-    background: rgba(51,204,255,0.2);
-    border: 1px solid rgba(51,204,255,0.3);
-    color: #e8fefe;
-}
-
-/* Clock */
-clock {
-    padding: 6px 18px;
+/* ==== MODULE GENERAL STYLE ==== */
+widget[name="custom-launcher"],
+widget[name="hyprland/workspaces"],
+widget[name="clock"],
+widget[name="network"],
+widget[name="pulseaudio"],
+widget[name="battery"],
+widget[name="tray"],
+widget[name="custom-power"] {
+    padding: 7px 14px;
     border-radius: 12px;
-    background: rgba(255,255,255,0.02);
-    border: 2px solid rgba(137,180,250,0.3);
+    background: rgba(255,255,255,0.07);
+    margin: 4px 8px;
+    border: 1px solid rgba(255,255,255,0.09);
 }
 
-/* Modules Right */
-network, pulseaudio, battery, tray, custom-power {
-    padding: 6px 12px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.02);
-    margin-left: 10px;
+/* ==== LAUNCHER ==== */
+widget[name="custom-launcher"] {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.18);
+    font-weight: 600;
+    color: #d8ebff;
+}
+
+/* ==== WORKSPACES ==== */
+widget[name="hyprland/workspaces"] {
+    display: flex;
+    padding: 6px 10px;
+}
+
+widget[name="hyprland/workspaces"] button {
+    padding: 5px 10px;
+    margin: 3px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.05);
+    color: #ccd3dc;
+}
+
+widget[name="hyprland/workspaces"] button.active {
+    background: rgba(120,180,255,0.30);
+    border: 1px solid rgba(120,180,255,0.45);
+    color: #ffffff;
+}
+
+widget[name="hyprland/workspaces"] button:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* ==== CLOCK ==== */
+widget[name="clock"] {
+    padding: 7px 18px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    font-weight: 500;
+}
+
+/* ==== RIGHT SIDE MODULES ==== */
+widget[name="network"],
+widget[name="pulseaudio"],
+widget[name="battery"],
+widget[name="tray"],
+widget[name="custom-power"] {
+    background: rgba(255,255,255,0.06);
+}
+
+/* ==== POWER BUTTON ==== */
+widget[name="custom-power"] {
+    background: rgba(255,120,120,0.18);
+    border: 1px solid rgba(255,120,120,0.35);
+    color: #ffe6e6;
+}
+
+/* ==== TRAY ==== */
+widget[name="tray"] {
+    padding: 7px 10px;
 }
