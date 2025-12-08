@@ -1,12 +1,12 @@
 /* ===== QuantumArch macOS-like Waybar ===== */
 
-* {
+{
     font-family: "JetBrains Mono", monospace;
     font-size: 12px;
 }
 
 /* Main bar container */
-#waybar {
+waybar {
     background: rgba(12,12,14,0.45);
     backdrop-filter: blur(12px) saturate(150%);
     margin: 10px;
@@ -15,7 +15,7 @@
 }
 
 /* Launcher */
-#custom-launcher {
+custom-launcher {
     background: #89b4fa;
     padding: 6px 12px;
     margin-right: 10px;
@@ -24,7 +24,7 @@
 }
 
 /* Workspaces */
-#workspaces {
+workspaces {
     display: flex;
     gap: 8px;
     padding: 6px;
@@ -32,21 +32,21 @@
     border-radius: 12px;
 }
 
-#workspaces button {
+workspaces button {
     padding: 6px 10px;
     border-radius: 9px;
     background: transparent;
     color: #7f8296;
 }
 
-#workspaces button.active {
+workspaces button.active {
     background: rgba(51,204,255,0.2);
     border: 1px solid rgba(51,204,255,0.3);
     color: #e8fefe;
 }
 
 /* Clock */
-#clock {
+clock {
     padding: 6px 18px;
     border-radius: 12px;
     background: rgba(255,255,255,0.02);
@@ -54,7 +54,7 @@
 }
 
 /* Modules Right */
-#network, #pulseaudio, #battery, #tray, #custom-power {
+network, pulseaudio, battery, tray, custom-power {
     padding: 6px 12px;
     border-radius: 12px;
     background: rgba(255,255,255,0.02);
