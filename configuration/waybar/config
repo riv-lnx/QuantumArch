@@ -23,54 +23,49 @@
         "custom/power"
     ],
 
+    "custom/launcher": {
+        "format": "[Menu]",
+        "on-click": "rofi -show drun",
+        "tooltip": false
+    },
+
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "format": "{icon}",
-        "format-icons": {
-            "default": "",
-            "active": "",
-            "urgent": ""
-        },
+        "format": "{name}",
         "persistent-workspaces": {
             "*": 5
         }
     },
 
-    "custom/launcher": {
-        "format": "",
-        "on-click": "rofi -show drun",
-        "tooltip": false
-    },
-
     "clock": {
-        "format": "{:%H:%M  %a, %d %b}",
-        "tooltip-format": "{:%A, %d %B %Y}"
+        "format": "[Time] {:%H:%M  |  %a, %d %b}",
+        "tooltip-format": "%A, %d %B %Y"
     },
 
     "network": {
-        "format-wifi": " {essid}",
-        "format-ethernet": " ETH",
-        "format-disconnected": " Offline"
+        "format-wifi": "[WiFi] {essid}",
+        "format-ethernet": "[LAN] Connected",
+        "format-disconnected": "[Net] Offline"
     },
 
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "󰝟 Muted"
+        "format": "[Vol] {volume}%",
+        "format-muted": "[Vol] Muted"
     },
 
     "battery": {
-        "format": "{capacity}% ({timeToEmpty})",
+        "format": "[Batt] {capacity}%",
         "tooltip": true
     },
 
     "tray": {
-        "icon-size": 18,
+        "icon-size": 16,
         "spacing": 8
     },
 
     "custom/power": {
-        "format": "",
+        "format": "[Power]",
         "on-click": "wlogout"
     }
 }
