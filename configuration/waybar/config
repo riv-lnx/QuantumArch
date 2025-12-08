@@ -1,71 +1,25 @@
 {
     "layer": "top",
     "position": "top",
+    "mod": "dock",
     "height": 34,
-    "margin-top": 10,
+    "margin-top": 5,
     "margin-left": 10,
     "margin-right": 10,
-
-    "modules-left": [
-        "custom/launcher",
-        "hyprland/workspaces"
-    ],
-
-    "modules-center": [
-        "clock"
-    ],
-
-    "modules-right": [
-        "network",
-        "pulseaudio",
-        "battery",
-        "tray",
-        "custom/power"
-    ],
-
-    "custom/launcher": {
-        "format": "[Menu]",
-        "on-click": "rofi -show drun",
-        "tooltip": false
-    },
-
+    "modules-left": ["clock", "hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["network", "cpu", "memory", "pulseaudio", "tray"],
+    
     "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{name}",
-        "persistent-workspaces": {
-            "*": 5
-        }
+        "format": "{icon}",
+        "on-click": "activate",
+        "persistent-workspaces": { "*": 5 }
     },
-
     "clock": {
-        "format": "[Time] {:%H:%M  |  %a, %d %b}",
-        "tooltip-format": "%A, %d %B %Y"
+        "format": "\uf017 {:%H:%M  \uf073 %a, %d %b}"
     },
-
-    "network": {
-        "format-wifi": "[WiFi] {essid}",
-        "format-ethernet": "[LAN] Connected",
-        "format-disconnected": "[Net] Offline"
-    },
-
-    "pulseaudio": {
-        "format": "[Vol] {volume}%",
-        "format-muted": "[Vol] Muted"
-    },
-
-    "battery": {
-        "format": "[Batt] {capacity}%",
-        "tooltip": true
-    },
-
-    "tray": {
-        "icon-size": 16,
-        "spacing": 8
-    },
-
-    "custom/power": {
-        "format": "[Power]",
-        "on-click": "wlogout"
-    }
+    "cpu": { "format": "\uf2db {usage}%" },
+    "memory": { "format": "\uf538 {}%" },
+    "pulseaudio": { "format": "\uf028 {volume}%" },
+    "network": { "format-wifi": "\uf1eb {essid}", "format-ethernet": "\uf0c1 Eth", "format-disconnected": "\u26a0 Off" }
 }
