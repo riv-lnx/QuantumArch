@@ -1,0 +1,21 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 13px;
+}
+window#waybar { background: transparent; }
+/* Floating Pills Design */
+#workspaces, #clock, #cpu, #memory, #network, #pulseaudio, #tray {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 5px 15px;
+    margin: 0 4px;
+    border-radius: 15px;
+    border: 1px solid #45475a;
+}
+#workspaces button.active { color: #89b4fa; }
+#clock { color: #fab387; }
+#cpu { color: #f38ba8; }
+#memory { color: #a6e3a1; }
