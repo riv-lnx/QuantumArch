@@ -1,51 +1,60 @@
 * {
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 14px;
-    border: none;
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+  font-size: 13px;
+  color: #e8eef8;
 }
 
 window#waybar {
-    background: rgba(20, 30, 60, 0.35);
-    border-radius: 16px;
-    backdrop-filter: blur(18px);
-    padding: 6px;
-    margin: 10px 14px;
+  background: rgba(18, 24, 36, 0.48);
+  backdrop-filter: blur(18px);
+  border-radius: 16px;
+  padding: 6px 12px;
+  margin: 12px 18px; /* membuat effect melayang */
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
-/* GENERAL MODULE STYLE */
-#custom-startmenu,
-#custom-weather,
-#hyprland-workspaces,
-#clock,
-#custom-perf_toggle,
-#custom-performance,
+/* modules layout */
+#custom-launcher,
+#custom-perf,
 #pulseaudio,
 #network,
-#battery {
-    background: rgba(255, 255, 255, 0.10);
-    padding: 6px 14px;
-    margin: 0 6px;
-    border-radius: 12px;
-    color: #d8e6ff;
-}
-
-/* WORKSPACES GLOW */
-#workspaces button.active {
-    background: rgba(80, 140, 255, 0.35);
-    border-radius: 50%;
-    box-shadow: 0 0 8px #4da3ff;
-    color: white;
-}
-
-/* PERFORMANCE BOX */
-#custom-performance {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
-}
-
-/* CLOCK EMPHASIS */
+#battery,
+#custom-weather,
 #clock {
-    background: rgba(80, 140, 255, 0.55);
-    border-radius: 12px;
-    color: black;
+  padding: 6px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  margin: 0 8px;
+}
+
+/* workspace pills */
+#workspaces button {
+  padding: 6px 10px;
+  margin: 0 4px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  color: #cfe9ff;
+}
+
+#workspaces button.active {
+  background: rgba(64, 150, 255, 0.40);
+  box-shadow: 0 0 10px rgba(64,150,255,0.5);
+  color: #ffffff;
+}
+
+/* perf tooltip box style (waybar shows tooltip) */
+.tooltip {
+  background: rgba(10, 12, 18, 0.9);
+  color: #e6eefc;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 12px;
+}
+
+/* clock emphasis */
+#clock {
+  background: rgba(90,170,255,0.35);
+  color: #000;
+  font-weight: 700;
+  border-radius: 12px;
 }
