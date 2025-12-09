@@ -6,13 +6,16 @@
     "passthrough": false,
     "gtk-layer-shell": true,
     "height": 44,
+
     "modules-left": [
         "custom/launcher",
         "hyprland/window"
     ],
+
     "modules-center": [
         "hyprland/workspaces"
     ],
+
     "modules-right": [
         "pulseaudio",
         "network",
@@ -33,11 +36,7 @@
         "on-click": "activate",
         "format": "{icon}",
         "persistent-workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
+            "1": [], "2": [], "3": [], "4": [], "5": []
         },
         "format-icons": {
             "default": "",
@@ -95,8 +94,8 @@
     },
 
     "custom/power": {
-        "format": "",
-        "on-click": "wlogout",
-        "tooltip": false
+        "format": "󰀘",        // Logo Q Nerd Font
+        "on-click": "/usr/local/bin/startmenu.sh",
+        "tooltip": "Power Menu"
     }
 }
