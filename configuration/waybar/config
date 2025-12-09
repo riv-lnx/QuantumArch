@@ -1,25 +1,54 @@
 {
-    "layer": "top",
-    "position": "top",
-    "mod": "dock",
-    "height": 34,
-    "margin-top": 5,
-    "margin-left": 10,
-    "margin-right": 10,
-    "modules-left": ["clock", "hyprland/workspaces"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["network", "cpu", "memory", "pulseaudio", "tray"],
-    
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "persistent-workspaces": { "*": 5 }
-    },
-    "clock": {
-        "format": "\uf017 {:%H:%M  \uf073 %a, %d %b}"
-    },
-    "cpu": { "format": "\uf2db {usage}%" },
-    "memory": { "format": "\uf538 {}%" },
-    "pulseaudio": { "format": "\uf028 {volume}%" },
-    "network": { "format-wifi": "\uf1eb {essid}", "format-ethernet": "\uf0c1 Eth", "format-disconnected": "\u26a0 Off" }
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "height": 34,
+  "margin-top": 5,
+  "margin-left": 10,
+  "margin-right": 10,
+  "spacing": 8,
+  "modules-left": ["clock", "hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": ["network", "cpu", "memory", "battery", "pulseaudio", "tray", "startmenu"],
+
+  "hyprland/workspaces": {
+    "format": "[{name}]",
+    "on-click": "activate",
+    "persistent-workspaces": { "*": 5 }
+  },
+
+  "hyprland/window": {
+    "format": "> {title}"
+  },
+
+  "clock": {
+    "format": "[%H:%M %a, %d %b]",
+    "tooltip-format": "%Y-%m-%d %H:%M:%S"
+  },
+
+  "cpu": {
+    "format": "CPU: {usage}% {bar:10}"
+  },
+  "memory": {
+    "format": "MEM: {used}/{total}MB {bar:10}"
+  },
+  "battery": {
+    "format": "BAT: {capacity}% ({status}) {bar:10}"
+  },
+  "pulseaudio": {
+    "format": "VOL: {volume}%"
+  },
+
+  "network": { 
+    "format-wifi": "WIFI: {essid} {ipaddr}", 
+    "format-ethernet": "ETH: {ipaddr}", 
+    "format-disconnected": "OFFLINE" 
+  },
+
+  "tray": {},
+
+  "startmenu": {
+    "format": "[START]",
+    "on-click": "~/.config/waybar/scripts/startmenu.sh"
+  }
 }
