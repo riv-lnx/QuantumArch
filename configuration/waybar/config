@@ -3,10 +3,13 @@
     "position": "top",
     "mod": "dock",
     "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
     "height": 44,
+    "spacing": 12,
 
     "modules-left": [
-        "custom/launcher",
+        "custom/startmenu",
         "hyprland/window"
     ],
 
@@ -15,8 +18,10 @@
     ],
 
     "modules-right": [
-        "custom/cpu",
-        "custom/ram",
+        "cpu",
+        "memory",
+        "disk",
+        "temperature",
         "pulseaudio",
         "network",
         "battery",
@@ -24,97 +29,86 @@
         "custom/power"
     ],
 
-    /* ----------------------------------------------------
-       Identity / Launcher
-       ---------------------------------------------------- */
-    "custom/launcher": {
-        "format": "\uf303", // Arch logo (Quantum style)
-        "on-click": "wofi -show drun",
-        "tooltip": "QuantumArch Launcher"
+    "custom/startmenu": {
+        "format": "\uf303",
+        "on-click": "~/.config/waybar/scripts/startmenu.sh",
+        "tooltip": false
     },
 
-    /* ----------------------------------------------------
-       Window Title
-       ---------------------------------------------------- */
     "hyprland/window": {
         "format": "{}",
-        "max-length": 40
+        "max-length": 45,
+        "separate-outputs": true
     },
 
-    /* ----------------------------------------------------
-       Workspace – macOS Sonoma Dot Style
-       ---------------------------------------------------- */
     "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
         "disable-scroll": true,
         "all-outputs": true,
-        "format": "{icon}",
+        "persistent-workspaces": { "1": [], "2": [], "3": [], "4": [], "5": [] },
         "format-icons": {
             "default": "\uf111",
             "active": "\uf192"
         }
     },
 
-    /* ----------------------------------------------------
-       Developer Performance Metrics (hover reveal)
-       ---------------------------------------------------- */
-    "custom/cpu": {
-        "exec": "~/.config/waybar/scripts/system-info.sh cpu",
-        "interval": 3,
-        "tooltip": "~/.config/waybar/scripts/system-info.sh cpu-full"
+    "cpu": {
+        "format": "\uf2db {usage}%",
+        "tooltip": true
     },
 
-    "custom/ram": {
-        "exec": "~/.config/waybar/scripts/system-info.sh ram",
-        "interval": 5,
-        "tooltip": "~/.config/waybar/scripts/system-info.sh ram-full"
+    "memory": {
+        "format": "\uf538 {used}GB",
+        "tooltip": true
     },
 
-    /* ----------------------------------------------------
-       Audio
-       ---------------------------------------------------- */
+    "disk": {
+        "format": "\uf0a0 {percentage}%",
+        "tooltip": true
+    },
+
+    "temperature": {
+        "format": "\uf2c9 {temperatureC}°C",
+        "tooltip": true
+    },
+
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-muted": "\uf6a9 Muted",
         "on-click": "pavucontrol",
-        "scroll-step": 4,
+        "scroll-step": 5,
         "format-icons": {
-            "default": ["\uf026", "\uf027", "\uf028"]
+            "default": ["\uf026", "\uf027", "\uf028"],
+            "headphones": "\uf025"
         }
     },
 
-    /* ----------------------------------------------------
-       Network
-       ---------------------------------------------------- */
     "network": {
         "format-wifi": "\uf1eb {signalStrength}%",
         "format-ethernet": "\uf796 Wired",
-        "tooltip-format": "{essid}  {ipaddr}",
-        "format-disconnected": "\uf071 Offline"
+        "format-disconnected": "\uf071 Disconnected",
+        "tooltip-format": "{ifname}  {ipaddr}  {essid}"
     },
 
-    /* ----------------------------------------------------
-       Battery
-       ---------------------------------------------------- */
     "battery": {
-        "states": { "good": 90, "warning": 30, "critical": 15 },
         "format": "{icon} {capacity}%",
         "format-charging": "\uf0e7 {capacity}%",
-        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"]
+        "format-plugged": "\uf1e6 {capacity}%",
+        "format-icons": [
+            "\uf244", "\uf243", "\uf242", "\uf241", "\uf240"
+        ],
+        "tooltip": true
     },
 
-    /* ----------------------------------------------------
-       Clock
-       ---------------------------------------------------- */
     "clock": {
-        "format": "{:%H:%M  \uf017  %a, %d %b}"
+        "format": "{:%H:%M  \uf017  %a, %d %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
-    /* ----------------------------------------------------
-       Power Menu
-       ---------------------------------------------------- */
     "custom/power": {
         "format": "\uf011",
-        "on-click": "~/.config/waybar/scripts/power-menu.sh",
-        "tooltip": "Power Options"
+        "on-click": "~/.config/waybar/scripts/powermenu.sh",
+        "tooltip": false
     }
 }
