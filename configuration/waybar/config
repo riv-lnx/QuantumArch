@@ -1,120 +1,98 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 42,
-    "margin": "10 14",
-    "exclusive": true,
-    "gtk-layer-shell": true,
+  "layer": "top",
+  "position": "top",
+  "gtk-layer-shell": true,
+  "height": 44,
+  "margin": "10 14",
+  "exclusive": true,
 
-    "modules-left": [
-        "custom/startmenu",
-        "custom/weather",
-        "hyprland/workspaces"
-    ],
+  "modules-left": [
+    "custom/launcher",
+    "hyprland/workspaces"
+  ],
 
-    "modules-center": [
-        "clock"
-    ],
+  "modules-center": [
+    "clock"
+  ],
 
-    "modules-right": [
-        "custom/perf_toggle",
-        "custom/performance",
-        "pulseaudio",
-        "network",
-        "battery"
-    ],
+  "modules-right": [
+    "custom/perf",
+    "pulseaudio",
+    "network",
+    "battery"
+  ],
 
-    /* ============================
-       QUANTUM START MENU
-       ============================ */
-    "custom/startmenu": {
-        "format": "\uf179", // Apple icon (diganti nanti ke logo Q jika ingin)
-        "tooltip": "Quantum Menu",
-        "on-click": "~/.config/waybar/startmenu.sh",
-        "interval": 0
-    },
+  /* Launcher = klik membuka wofi */
+  "custom/launcher": {
+    "format": "\uf303",
+    "tooltip": "Open Launcher",
+    "on-click": "~/.config/waybar/startmenu.sh",
+    "interval": 0
+  },
 
-    /* ============================
-       WEATHER (RINGAN)
-       ============================ */
-    "custom/weather": {
-        "exec": "~/.config/waybar/weather.sh",
-        "return-type": "json",
-        "interval": 900,
-        "format": "{icon} {temp}",
-        "tooltip-format": "{full}"
-    },
-
-    /* ============================
-       WORKSPACE GLOW
-       ============================ */
-    "hyprland/workspaces": {
-        "disable-scroll": false,
-        "on-click": "activate",
-        "format": "{icon}",
-        "format-icons": {
-            "default": "\uf111",  // ○
-            "active": "\uf192",   // ◎ glow
-            "urgent": "\uf06a"
-        }
-    },
-
-    /* ============================
-       CLOCK SONOMA STYLE
-       ============================ */
-    "clock": {
-        "format": "\uf017  %H:%M",
-        "tooltip-format": "%A, %d %B %Y"
-    },
-
-    /* ============================
-       PERFORMANCE (HOVER only)
-       ============================ */
-    "custom/perf_toggle": {
-        "format": "\uf200",
-        "interval": 0,
-        "tooltip": "System Performance",
-        "on-hover": "waybar-msg -m 1 module performance show",
-        "on-hover-out": "waybar-msg -m 1 module performance hide"
-    },
-
-    "custom/performance": {
-        "exec": "~/.config/waybar/performance.sh",
-        "interval": 2,
-        "format": "{}",
-        "tooltip": false
-    },
-
-    /* ============================
-       AUDIO
-       ============================ */
-    "pulseaudio": {
-        "format": "\uf028 {volume}%",
-        "format-muted": "\uf6a9 MUTE",
-        "on-click": "pavucontrol"
-    },
-
-    /* ============================
-       NETWORK
-       ============================ */
-    "network": {
-        "format-wifi": "\uf1eb {signalStrength}%",
-        "format-ethernet": "\uf796 ETH",
-        "format-disconnected": "\uf071 OFF"
-    },
-
-    /* ============================
-       BATTERY
-       ============================ */
-    "battery": {
-        "format": "{icon} {capacity}%",
-        "interval": 30,
-        "format-icons": [
-            "\uf244",
-            "\uf243",
-            "\uf242",
-            "\uf241",
-            "\uf240"
-        ]
+  /* Workspaces dengan icon \ufxxx */
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "on-click": "activate",
+    "persistent-workspaces": { "1": [], "2": [], "3": [], "4": [], "5": [] },
+    "format-icons": {
+      "default": "\uf111",
+      "active": "\uf192",
+      "urgent": "\uf06a"
     }
+  },
+
+  /* Performance module:
+     - exec -> perf.sh mengeluarkan JSON {"text":"\uf201","tooltip":"CPU: 12%\\nRAM: 2048MB"}
+     - tooltip akan tampil pada hover -> memenuhi "performance hover" */
+  "custom/perf": {
+    "exec": "~/.config/waybar/perf.sh",
+    "return-type": "json",
+    "interval": 3,
+    "format": "{text}",
+    "tooltip": true
+  },
+
+  /* Pulseaudio (volume) */
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "\uf6a9 Muted",
+    "on-click": "pavucontrol",
+    "scroll-step": 5,
+    "format-icons": {
+      "default": ["\uf026","\uf027","\uf028"]
+    }
+  },
+
+  /* Network */
+  "network": {
+    "format-wifi": "\uf1eb {signalStrength}%",
+    "format-ethernet": "\uf796 Wired",
+    "format-disconnected": "\uf071 Disconnected",
+    "tooltip-format": "{essid} • {ifname} • {ipaddr}"
+  },
+
+  /* Battery */
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": "\uf0e7 {capacity}%",
+    "format-icons": ["\uf244","\uf243","\uf242","\uf241","\uf240"]
+  },
+
+  /* Weather (exec -> weather.sh mengeluarkan JSON {"text":"...","icon":"\uf185","full":"..."} ) */
+  "custom/weather": {
+    "exec": "~/.config/waybar/weather.sh",
+    "return-type": "json",
+    "format": "{icon} {text}",
+    "tooltip-format": "{full}",
+    "interval": 900
+  },
+
+  /* Clock (icon \uf017) */
+  "clock": {
+    "format": "\uf017  {:%H:%M  %a, %d %b}",
+    "tooltip": false
+  }
 }
