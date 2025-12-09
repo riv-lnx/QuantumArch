@@ -1,111 +1,50 @@
 * {
-    border: none;
-    border-radius: 0;
     font-family: "JetBrainsMono Nerd Font";
-    font-weight: bold;
     font-size: 14px;
-    min-height: 0;
+    border: none;
 }
 
 window#waybar {
-    background: rgba(20, 20, 30, 0.6);
-    color: #cdd6f4;
-    border-bottom: 1px solid rgba(100, 100, 100, 0.2);
-    backdrop-filter: blur(10px);
+    background: rgba(25, 25, 30, 0.55);
+    backdrop-filter: blur(20px);
+    color: #eaeaea;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-tooltip {
-    background: #1e1e2e;
-    border-radius: 10px;
-    border: 2px solid #33ccff;
-}
-
-/* Workspaces */
 #workspaces button {
-    padding: 0 5px;
     background: transparent;
-    color: #ffffff;
-    font-size: 16px;
-}
-
-#workspaces button:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
+    padding: 0 10px;
+    color: #ddd;
 }
 
 #workspaces button.active {
     color: #33ccff;
-    text-shadow: 0 0 5px #33ccff;
+    text-shadow: 0 0 6px #33ccff;
 }
 
-/* Launcher (Wofi) */
 #custom-launcher {
     font-size: 20px;
+    padding: 0 14px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
     color: #33ccff;
-    margin-left: 15px;
-    margin-right: 10px;
-    padding: 0 10px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
 }
 
-/* Window title */
-#window {
-    color: #ffffff;
-    margin-left: 10px;
+#pulseaudio, #network, #battery, #clock, #custom-power {
+    background: rgba(255,255,255,0.08);
+    padding: 0 15px;
+    margin: 5px 8px;
+    border-radius: 14px;
+}
+
+#clock {
+    background: #33ccff;
+    color: #000;
     font-weight: bold;
 }
 
-/* Right modules (macOS pill) */
-#pulseaudio,
-#network,
-#battery,
-#clock,
 #custom-power {
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 0 15px;
-    margin: 5px 10px 5px 0;
-    border-radius: 15px;
-    transition: 0.2s ease;
-}
-
-/* Clock highlight */
-#clock {
-    background-color: #33ccff;
-    color: #000000;
-}
-
-/* Battery states */
-#battery.charging,
-#battery.plugged {
-    color: #a6e3a1;
-}
-
-#battery.critical:not(.charging) {
-    background-color: #f38ba8;
-    color: #bf5656;
-    animation: blink 0.5s linear infinite alternate;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-/* Power (Logo Q) - macOS style */
-#custom-power {
-    background-color: rgba(255, 255, 255, 0.08);
-    color: #ff6666;
-    font-size: 18px;
-    margin-right: 15px;
-    border-radius: 12px;
-    padding: 0 16px;
-}
-
-#custom-power:hover {
-    background-color: rgba(255, 80, 80, 0.25);
-    color: #ffffff;
-    backdrop-filter: blur(12px);
+    background: #ff5555;
+    color: #fff;
+    padding: 0 18px;
 }
