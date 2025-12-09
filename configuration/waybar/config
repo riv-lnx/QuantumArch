@@ -3,8 +3,6 @@
     "position": "top",
     "mod": "dock",
     "exclusive": true,
-    "passthrough": false,
-    "gtk-layer-shell": true,
     "height": 44,
 
     "modules-left": [
@@ -24,78 +22,88 @@
         "custom/power"
     ],
 
+    /* -------------------------
+       Window Title
+       ------------------------- */
     "hyprland/window": {
         "format": "{}",
-        "max-length": 50,
-        "separate-outputs": true
+        "max-length": 50
     },
 
+    /* -------------------------
+       Workspaces (macOS style)
+       ------------------------- */
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "on-click": "activate",
-        "format": "{icon}",
         "persistent-workspaces": {
             "1": [], "2": [], "3": [], "4": [], "5": []
         },
+        "format": "{icon}",
         "format-icons": {
-            "default": "",
-            "active": ""
+            "default": "\uf111",
+            "active": "\uf192"
         }
     },
 
+    /* -------------------------
+       Launcher (Quantum Start)
+       ------------------------- */
     "custom/launcher": {
-        "format": "",
+        "format": "\uf303",
         "on-click": "wofi -show drun",
         "tooltip": false
     },
 
+    /* -------------------------
+       Audio
+       ------------------------- */
     "pulseaudio": {
-        "format": "{icon}  {volume}%",
-        "format-muted": "  Muted",
-        "on-click": "pavucontrol",
+        "format": "{icon} {volume}%",
+        "format-muted": "\uf6a9 Muted",
         "scroll-step": 5,
+        "on-click": "pavucontrol",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "headphone": "\uf025",
+            "default": ["\uf026", "\uf027", "\uf028"]
         }
     },
 
+    /* -------------------------
+       Network
+       ------------------------- */
     "network": {
-        "format-wifi": "  {signalStrength}%",
-        "format-ethernet": "  Wired",
-        "tooltip-format": "{essid} - {ifname} via {gwaddr}",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "  Disconnected",
-        "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
+        "format-wifi": "\uf1eb  {signalStrength}%",
+        "format-ethernet": "\uf796  Wired",
+        "format-disconnected": "\uf071  Disconnected",
+        "tooltip-format": "{essid} - {ipaddr}"
     },
 
+    /* -------------------------
+       Battery
+       ------------------------- */
     "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon}  {capacity}%",
-        "format-charging": "  {capacity}%",
-        "format-plugged": "  {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "states": { "good": 95, "warning": 30, "critical": 15 },
+        "format": "{icon} {capacity}%",
+        "format-charging": "\uf0e7 {capacity}%",
+        "format-plugged": "\uf1e6 {capacity}%",
+        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"]
     },
 
+    /* -------------------------
+       Clock
+       ------------------------- */
     "clock": {
-        "format": "{:%H:%M    %a, %d %b}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "format": "{:%H:%M  \uf017  %a, %d %b}"
     },
 
+    /* -------------------------
+       Power Menu (Custom Script)
+       ------------------------- */
     "custom/power": {
-        "format": "󰀘",        // Logo Q Nerd Font
-        "on-click": "/usr/local/bin/startmenu.sh",
-        "tooltip": "Power Menu"
+        "format": "\uf011",
+        "on-click": "~/.config/waybar/scripts/power-menu.sh",
+        "tooltip": false
     }
 }
