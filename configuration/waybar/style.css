@@ -1,50 +1,51 @@
 * {
     font-family: "JetBrainsMono Nerd Font";
     font-size: 14px;
-    padding: 0;
-    margin: 0;
     border: none;
 }
 
 window#waybar {
-    background: rgba(25,25,35,0.45);
-    backdrop-filter: blur(25px);
-    border-bottom: 1px solid rgba(255,255,255,0.18);
-    color: #eaf0f5;
+    background: rgba(20, 30, 60, 0.35);
+    border-radius: 16px;
+    backdrop-filter: blur(18px);
+    padding: 6px;
+    margin: 10px 14px;
 }
 
-#custom-launcher,
-#custom-power,
+/* GENERAL MODULE STYLE */
+#custom-startmenu,
+#custom-weather,
+#hyprland-workspaces,
+#clock,
+#custom-perf_toggle,
+#custom-performance,
 #pulseaudio,
 #network,
-#battery,
-#custom-cpu,
-#custom-ram,
-#clock {
-    background: rgba(255,255,255,0.09);
-    padding: 0 15px;
-    margin: 6px 10px;
+#battery {
+    background: rgba(255, 255, 255, 0.10);
+    padding: 6px 14px;
+    margin: 0 6px;
     border-radius: 12px;
+    color: #d8e6ff;
 }
 
-#clock {
-    background: #33ccff;
-    color: black;
-    font-weight: bold;
-}
-
-#custom-cpu:hover,
-#custom-ram:hover {
-    background: rgba(255,255,255,0.25);
-}
-
-#workspaces button {
-    padding: 0 8px;
-    background: transparent;
-    color: #ddd;
-}
-
+/* WORKSPACES GLOW */
 #workspaces button.active {
-    color: #33ccff;
-    text-shadow: 0 0 6px #33ccff;
+    background: rgba(80, 140, 255, 0.35);
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4da3ff;
+    color: white;
+}
+
+/* PERFORMANCE BOX */
+#custom-performance {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+
+/* CLOCK EMPHASIS */
+#clock {
+    background: rgba(80, 140, 255, 0.55);
+    border-radius: 12px;
+    color: black;
 }
