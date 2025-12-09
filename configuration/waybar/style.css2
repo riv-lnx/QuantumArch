@@ -1,21 +1,83 @@
+/* macOS Sonoma Inspired ASCII-safe Waybar for QuantumArch */
+
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "JetBrainsMono Nerd Font";
-    font-weight: bold;
-    font-size: 13px;
+    font-family: "Monospace", sans-serif;
+    font-size: 12px;
 }
-window#waybar { background: transparent; }
-/* Floating Pills Design */
-#workspaces, #clock, #cpu, #memory, #network, #pulseaudio, #tray {
-    background: #1e1e2e;
-    color: #cdd6f4;
-    padding: 5px 15px;
+
+#waybar {
+    background: rgb(248, 248, 248);
+    border-bottom: 1px solid rgb(200,200,200);
+    border-radius: 6px;
+    padding: 0 8px;
+    color: rgb(28,28,28);
+    transition: background 0.2s ease;
+}
+
+#waybar .module {
     margin: 0 4px;
-    border-radius: 15px;
-    border: 1px solid #45475a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background 0.2s ease, color 0.2s ease;
 }
-#workspaces button.active { color: #89b4fa; }
-#clock { color: #fab387; }
-#cpu { color: #f38ba8; }
-#memory { color: #a6e3a1; }
+
+#waybar .module:hover {
+    background: rgb(230,230,230);
+    color: rgb(0,122,255);
+}
+
+#waybar .workspace {
+    font-weight: normal;
+    color: rgb(85,85,85);
+    text-decoration: none;
+}
+
+#waybar .workspace.active {
+    color: rgb(0,122,255);
+    text-decoration: underline;
+}
+
+#waybar .hyprland_window {
+    color: rgb(51,51,51);
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#waybar .clock {
+    font-weight: bold;
+}
+
+#waybar .cpu, 
+#waybar .memory, 
+#waybar .battery {
+    background: rgb(245,245,245);
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: monospace;
+    white-space: pre;
+}
+
+#waybar .pulseaudio, 
+#waybar .network,
+#waybar .tray {
+    background: rgb(245,245,245);
+    padding: 2px 5px;
+    border-radius: 4px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+#waybar .startmenu {
+    background: rgb(230,230,230);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+#waybar .startmenu:hover {
+    background: rgb(0,122,255);
+    color: white;
+}
