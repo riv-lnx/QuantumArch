@@ -1,98 +1,102 @@
-/* ==================================================
-   QuantumArch – macOS Glass Waybar (SAFE VERSION)
-   No unicode • No IDs • 100% Waybar 2025 compatible
-   ================================================== */
-
 * {
-    font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
-    color: #e6eaf2;
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 14px;
+    min-height: 0;
 }
 
-/* ==== MAIN BAR (glass transparency) ==== */
-window > box {
-    background-color: rgba(20, 20, 22, 0.35);
-    backdrop-filter: blur(18px) saturate(180%);
-    border-radius: 16px;
-    padding: 6px 10px;
-    margin: 10px;
-    border: 1px solid rgba(200,200,200,0.10);
+window#waybar {
+    background: rgba(20, 20, 30, 0.6); /* Quantum Dark Glass */
+    color: #cdd6f4;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.2);
+    backdrop-filter: blur(10px); /* Efek Blur macOS */
 }
 
-/* ==== MODULE GENERAL STYLE ==== */
-widget[name="custom-launcher"],
-widget[name="hyprland/workspaces"],
-widget[name="clock"],
-widget[name="network"],
-widget[name="pulseaudio"],
-widget[name="battery"],
-widget[name="tray"],
-widget[name="custom-power"] {
-    padding: 7px 14px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.07);
-    margin: 4px 8px;
-    border: 1px solid rgba(255,255,255,0.09);
+tooltip {
+    background: #1e1e2e;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #33ccff;
 }
 
-/* ==== LAUNCHER ==== */
-widget[name="custom-launcher"] {
-    background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.18);
-    font-weight: 600;
-    color: #d8ebff;
-}
-
-/* ==== WORKSPACES ==== */
-widget[name="hyprland/workspaces"] {
-    display: flex;
-    padding: 6px 10px;
-}
-
-widget[name="hyprland/workspaces"] button {
-    padding: 5px 10px;
-    margin: 3px;
-    background: rgba(255,255,255,0.04);
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.05);
-    color: #ccd3dc;
-}
-
-widget[name="hyprland/workspaces"] button.active {
-    background: rgba(120,180,255,0.30);
-    border: 1px solid rgba(120,180,255,0.45);
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
     color: #ffffff;
+    font-size: 16px;
 }
 
-widget[name="hyprland/workspaces"] button:hover {
-    background: rgba(255,255,255,0.15);
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inherit;
+    text-shadow: inherit;
+    border-radius: 15px;
 }
 
-/* ==== CLOCK ==== */
-widget[name="clock"] {
-    padding: 7px 18px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    font-weight: 500;
+#workspaces button.active {
+    color: #33ccff; /* Quantum Cyan */
+    text-shadow: 0 0 5px #33ccff;
 }
 
-/* ==== RIGHT SIDE MODULES ==== */
-widget[name="network"],
-widget[name="pulseaudio"],
-widget[name="battery"],
-widget[name="tray"],
-widget[name="custom-power"] {
-    background: rgba(255,255,255,0.06);
+#custom-launcher {
+    font-size: 20px;
+    color: #33ccff;
+    margin-left: 15px;
+    margin-right: 10px;
+    padding: 0 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
 }
 
-/* ==== POWER BUTTON ==== */
-widget[name="custom-power"] {
-    background: rgba(255,120,120,0.18);
-    border: 1px solid rgba(255,120,120,0.35);
-    color: #ffe6e6;
+#window {
+    color: #ffffff;
+    margin-left: 10px;
+    font-weight: bold;
 }
 
-/* ==== TRAY ==== */
-widget[name="tray"] {
-    padding: 7px 10px;
+/* Modules Right Styling (Pill Shape) */
+#pulseaudio, #network, #battery, #clock, #custom-power {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 0 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    border-radius: 15px;
+}
+
+#clock {
+    background-color: #33ccff;
+    color: #000000; /* Text hitam agar kontras dengan cyan */
+    margin-right: 10px;
+}
+
+#battery.charging, #battery.plugged {
+    color: #a6e3a1;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f38ba8;
+    color: #bf5656;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-power {
+    background-color: #ff5555;
+    color: #ffffff;
+    margin-right: 15px;
+    padding-right: 18px; /* Sedikit adjustment agar icon center */
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
 }
