@@ -5,62 +5,56 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 40,
+    "height": 44,
     "modules-left": [
-        "custom/launch",
-        "hyprland/workspaces",
+        "custom/launcher",
         "hyprland/window"
     ],
     "modules-center": [
-        "clock"
+        "hyprland/workspaces"
     ],
     "modules-right": [
-        "network",
         "pulseaudio",
+        "network",
         "battery",
-        "tray"
+        "clock",
+        "custom/power"
     ],
 
     "hyprland/window": {
-        "format": "{}"
+        "format": "{}",
+        "max-length": 50,
+        "separate-outputs": true
     },
 
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "on-click": "activate",
-        "persistent_workspaces": {
+        "format": "{icon}",
+        "persistent-workspaces": {
             "1": [],
             "2": [],
             "3": [],
             "4": [],
-            "5": [],
+            "5": []
+        },
+        "format-icons": {
+            "default": "",
+            "active": ""
         }
     },
 
-    "custom/launch": {
+    "custom/launcher": {
         "format": "",
-        "on-click": "wlogout",
+        "on-click": "rofi -show drun",
         "tooltip": false
     },
 
-    "tray": {
-        "icon-size": 18,
-        "spacing": 10
-    },
-
-    "clock": {
-        "format": "{:%H:%M    %a, %b %e}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "tooltip": false,
-        "format-muted": " Muted",
+        "format": "{icon}  {volume}%",
+        "format-muted": "  Muted",
         "on-click": "pavucontrol",
-        "on-scroll-up": "pamixer -i 5",
-        "on-scroll-down": "pamixer -d 5",
         "scroll-step": 5,
         "format-icons": {
             "headphone": "",
@@ -75,11 +69,11 @@
 
     "network": {
         "format-wifi": "  {signalStrength}%",
-        "format-ethernet": "  {ipaddr}",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": " Disconnected",
-        "tooltip-format": "{essid}",
-        "on-click": "nm-connection-editor"
+        "format-ethernet": "  Wired",
+        "tooltip-format": "{essid} - {ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "  Disconnected",
+        "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
     },
 
     "battery": {
@@ -88,10 +82,21 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
+        "format": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
+    },
+
+    "clock": {
+        "format": "{:%H:%M    %a, %d %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "custom/power": {
+        "format": "",
+        "on-click": "wlogout",
+        "tooltip": false
     }
 }
