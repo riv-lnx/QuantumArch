@@ -8,20 +8,19 @@
 }
 
 window#waybar {
-    background: rgba(20, 20, 30, 0.6); /* Quantum Dark Glass */
+    background: rgba(20, 20, 30, 0.6);
     color: #cdd6f4;
     border-bottom: 1px solid rgba(100, 100, 100, 0.2);
-    backdrop-filter: blur(10px); /* Efek Blur macOS */
+    backdrop-filter: blur(10px);
 }
 
 tooltip {
     background: #1e1e2e;
     border-radius: 10px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #33ccff;
+    border: 2px solid #33ccff;
 }
 
+/* Workspaces */
 #workspaces button {
     padding: 0 5px;
     background: transparent;
@@ -31,16 +30,15 @@ tooltip {
 
 #workspaces button:hover {
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: inherit;
-    text-shadow: inherit;
     border-radius: 15px;
 }
 
 #workspaces button.active {
-    color: #33ccff; /* Quantum Cyan */
+    color: #33ccff;
     text-shadow: 0 0 5px #33ccff;
 }
 
+/* Launcher (Wofi) */
 #custom-launcher {
     font-size: 20px;
     color: #33ccff;
@@ -51,47 +49,42 @@ tooltip {
     border-radius: 15px;
 }
 
+/* Window title */
 #window {
     color: #ffffff;
     margin-left: 10px;
     font-weight: bold;
 }
 
-/* Modules Right Styling (Pill Shape) */
-#pulseaudio, #network, #battery, #clock, #custom-power {
+/* Right modules (macOS pill) */
+#pulseaudio,
+#network,
+#battery,
+#clock,
+#custom-power {
     background-color: rgba(255, 255, 255, 0.05);
     padding: 0 15px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-right: 10px;
+    margin: 5px 10px 5px 0;
     border-radius: 15px;
+    transition: 0.2s ease;
 }
 
+/* Clock highlight */
 #clock {
     background-color: #33ccff;
-    color: #000000; /* Text hitam agar kontras dengan cyan */
-    margin-right: 10px;
+    color: #000000;
 }
 
-#battery.charging, #battery.plugged {
+/* Battery states */
+#battery.charging,
+#battery.plugged {
     color: #a6e3a1;
 }
 
 #battery.critical:not(.charging) {
     background-color: #f38ba8;
     color: #bf5656;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#custom-power {
-    background-color: #ff5555;
-    color: #ffffff;
-    margin-right: 15px;
-    padding-right: 18px; /* Sedikit adjustment agar icon center */
+    animation: blink 0.5s linear infinite alternate;
 }
 
 @keyframes blink {
@@ -99,4 +92,20 @@ tooltip {
         background-color: #ffffff;
         color: #000000;
     }
+}
+
+/* Power (Logo Q) - macOS style */
+#custom-power {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #ff6666;
+    font-size: 18px;
+    margin-right: 15px;
+    border-radius: 12px;
+    padding: 0 16px;
+}
+
+#custom-power:hover {
+    background-color: rgba(255, 80, 80, 0.25);
+    color: #ffffff;
+    backdrop-filter: blur(12px);
 }
