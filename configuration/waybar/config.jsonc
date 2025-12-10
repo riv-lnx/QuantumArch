@@ -5,16 +5,17 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 30, // Tinggi disesuaikan agar proporsional
+    "height": 30,  // <-- TINGGI BAR DIPERKECIL JADI 30PX
+    
     "modules-left": [
         "custom/launch_wofi",
         "hyprland/workspaces",
         "cpu",
         "memory",
-        "disk" // Tambahan: Monitor Disk untuk Developer
+        "disk"
     ],
     "modules-center": [
-        "hyprland/window" // Tambahan: Menampilkan Judul Window Aktif
+        "hyprland/window"
     ],
     "modules-right": [
         "clock",
@@ -24,46 +25,37 @@
         "group/power"
     ],
 
-    // --- MODULE CONFIGURATION ---
-
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "on-click": "activate",
         "format": "{icon}",
         "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": []
+            "1": [], "2": [], "3": [], "4": []
         }
     },
     
-    // --- LOGO QUANTUM (Q) ---
     "custom/launch_wofi": {
-        "format": " Q ", 
+        "format": " Q ",
         "on-click": "~/.config/waybar/scripts/startmenu.sh",
         "tooltip": false
     },
 
-    // --- WINDOW TITLE (Agar tengah tidak kosong) ---
     "hyprland/window": {
         "format": "{}",
-        "max-length": 50,
+        "max-length": 40,
         "separate-outputs": true
     },
 
     "cpu": {
         "interval": 10,
         "format": " {usage}%",
-        "max-length": 10,
-        "on-click": "kitty -e htop"
+        "max-length": 10
     },
     "memory": {
         "interval": 30,
         "format": " {}%",
-        "max-length": 10,
-        "on-click": "kitty -e htop"
+        "max-length": 10
     },
     "disk": {
         "interval": 30,
@@ -72,11 +64,11 @@
     },
     "clock": {
         "format": "  {:%d %b  %H:%M}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "{calendar}"
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": " Muted",
+        "format-muted": "",
         "on-click": "pavucontrol",
         "format-icons": {
             "default": ["", "", ""]
@@ -84,17 +76,15 @@
     },
     "network": {
         "format-wifi": "  {signalStrength}%",
-        "format-ethernet": " Connected",
-        "format-disconnected": "⚠ Offline",
-        "tooltip-format": "{essid}",
-        "on-click": "nm-connection-editor"
+        "format-ethernet": " Eth",
+        "format-disconnected": "⚠ Off",
+        "tooltip-format": "{essid}"
     },
     "tray": {
-        "icon-size": 18,
-        "spacing": 10
+        "icon-size": 14, // <-- IKON TRAY DIPERKECIL
+        "spacing": 8
     },
 
-    // --- POWER DRAWER ---
     "group/power": {
         "orientation": "inherit",
         "drawer": {
@@ -102,31 +92,14 @@
             "children-class": "not-power",
             "transition-left-to-right": false
         },
-        "modules": [
-            "custom/power",
-            "custom/lock",
-            "custom/reboot",
-            "custom/quit"
-        ]
+        "modules": [ "custom/power", "custom/lock", "custom/reboot", "custom/quit" ]
     },
     "custom/power": {
         "format": "",
         "tooltip": false,
         "on-click": "kitty --class floating -e ~/.config/waybar/scripts/powermenu.sh"
     },
-    "custom/lock": {
-        "format": "",
-        "tooltip": false,
-        "on-click": "loginctl lock-session"
-    },
-    "custom/reboot": {
-        "format": "",
-        "tooltip": false,
-        "on-click": "reboot"
-    },
-    "custom/quit": {
-        "format": "",
-        "tooltip": false,
-        "on-click": "hyprctl dispatch exit"
-    }
+    "custom/lock": { "format": "", "on-click": "loginctl lock-session" },
+    "custom/reboot": { "format": "", "on-click": "reboot" },
+    "custom/quit": { "format": "", "on-click": "hyprctl dispatch exit" }
 }
