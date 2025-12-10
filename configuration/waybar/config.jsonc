@@ -5,22 +5,26 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 44,
+    "height": 42, // Tinggi disesuaikan agar proporsional
     "modules-left": [
         "custom/launch_wofi",
         "hyprland/workspaces",
         "cpu",
-        "memory"
+        "memory",
+        "disk" // Tambahan: Monitor Disk untuk Developer
     ],
     "modules-center": [
-        "clock"
+        "hyprland/window" // Tambahan: Menampilkan Judul Window Aktif
     ],
     "modules-right": [
+        "clock",
         "pulseaudio",
         "network",
         "tray",
         "group/power"
     ],
+
+    // --- MODULE CONFIGURATION ---
 
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -35,24 +39,39 @@
         }
     },
     
+    // --- LOGO QUANTUM (Q) ---
     "custom/launch_wofi": {
-        "format": "",
+        "format": " Q ", 
         "on-click": "~/.config/waybar/scripts/startmenu.sh",
         "tooltip": false
+    },
+
+    // --- WINDOW TITLE (Agar tengah tidak kosong) ---
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "separate-outputs": true
     },
 
     "cpu": {
         "interval": 10,
         "format": " {usage}%",
-        "max-length": 10
+        "max-length": 10,
+        "on-click": "kitty -e htop"
     },
     "memory": {
         "interval": 30,
         "format": " {}%",
-        "max-length": 10
+        "max-length": 10,
+        "on-click": "kitty -e htop"
+    },
+    "disk": {
+        "interval": 30,
+        "format": " {percentage_used}%",
+        "path": "/"
     },
     "clock": {
-        "format": "{:%H:%M    %d %b}",
+        "format": "  {:%d %b  %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "pulseaudio": {
@@ -67,13 +86,15 @@
         "format-wifi": "  {signalStrength}%",
         "format-ethernet": " Connected",
         "format-disconnected": "⚠ Offline",
-        "tooltip-format": "{essid}"
+        "tooltip-format": "{essid}",
+        "on-click": "nm-connection-editor"
     },
     "tray": {
         "icon-size": 18,
         "spacing": 10
     },
 
+    // --- POWER DRAWER ---
     "group/power": {
         "orientation": "inherit",
         "drawer": {
