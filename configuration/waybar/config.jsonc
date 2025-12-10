@@ -1,105 +1,87 @@
-{
-    "layer": "top",
-    "position": "top",
-    "mod": "dock",
-    "exclusive": true,
-    "passthrough": false,
-    "gtk-layer-shell": true,
-    "height": 30,  // <-- TINGGI BAR DIPERKECIL JADI 30PX
+/* --- GLOBAL RESET --- */
+* {
+    border: none;
+    font-family: "JetBrainsMono Nerd Font", "Roboto", sans-serif;
+    font-size: 12px; /* Ukuran font ideal untuk bar tipis */
+    font-weight: bold;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+/* --- CONTAINER UTAMA (SLIM & CLEAN) --- */
+.modules-left, .modules-center, .modules-right {
+    /* Background Gelap Transparan (Elegant Dark) */
+    background-color: rgba(20, 20, 30, 0.85);
+
+    /* Border Glossy Minimalis */
+    border-top: 1px solid rgba(255, 255, 255, 0.2);       /* Highlight tipis di atas */
+    border-bottom: 2px solid rgba(0, 255, 255, 0.6);      /* Garis Quantum Cyan tegas di bawah */
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+
+    /* Ukuran & Posisi */
+    border-radius: 12px;  /* Radius tidak terlalu bulat, lebih 'tech' */
+    padding: 2px 10px;    /* PADDING KECIL agar bar tipis */
+    margin-top: 5px;      /* Jarak 'floating' kecil (5px) */
     
-    "modules-left": [
-        "custom/launch_wofi",
-        "hyprland/workspaces",
-        "cpu",
-        "memory",
-        "disk"
-    ],
-    "modules-center": [
-        "hyprland/window"
-    ],
-    "modules-right": [
-        "clock",
-        "pulseaudio",
-        "network",
-        "tray",
-        "group/power"
-    ],
+    /* Shadow Hitam Tajam (Clean look, no blur bleed) */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+}
 
-    "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "on-click": "activate",
-        "format": "{icon}",
-        "persistent_workspaces": {
-            "1": [], "2": [], "3": [], "4": []
-        }
-    },
-    
-    "custom/launch_wofi": {
-        "format": " Q ",
-        "on-click": "~/.config/waybar/scripts/startmenu.sh",
-        "tooltip": false
-    },
+/* Margin kiri kanan agar tidak menempel layar */
+.modules-left { margin-left: 10px; }
+.modules-right { margin-right: 10px; }
 
-    "hyprland/window": {
-        "format": "{}",
-        "max-length": 40,
-        "separate-outputs": true
-    },
+/* --- MODUL --- */
 
-    "cpu": {
-        "interval": 10,
-        "format": " {usage}%",
-        "max-length": 10
-    },
-    "memory": {
-        "interval": 30,
-        "format": " {}%",
-        "max-length": 10
-    },
-    "disk": {
-        "interval": 30,
-        "format": " {percentage_used}%",
-        "path": "/"
-    },
-    "clock": {
-        "format": "  {:%d %b  %H:%M}",
-        "tooltip-format": "{calendar}"
-    },
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "",
-        "on-click": "pavucontrol",
-        "format-icons": {
-            "default": ["", "", ""]
-        }
-    },
-    "network": {
-        "format-wifi": "  {signalStrength}%",
-        "format-ethernet": " Eth",
-        "format-disconnected": "⚠ Off",
-        "tooltip-format": "{essid}"
-    },
-    "tray": {
-        "icon-size": 14, // <-- IKON TRAY DIPERKECIL
-        "spacing": 8
-    },
+/* Logo Quantum */
+#custom-launch_wofi {
+    color: #00ffff;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0 8px;
+    margin-right: 8px;
+    font-size: 13px;
+}
 
-    "group/power": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 500,
-            "children-class": "not-power",
-            "transition-left-to-right": false
-        },
-        "modules": [ "custom/power", "custom/lock", "custom/reboot", "custom/quit" ]
-    },
-    "custom/power": {
-        "format": "",
-        "tooltip": false,
-        "on-click": "kitty --class floating -e ~/.config/waybar/scripts/powermenu.sh"
-    },
-    "custom/lock": { "format": "", "on-click": "loginctl lock-session" },
-    "custom/reboot": { "format": "", "on-click": "reboot" },
-    "custom/quit": { "format": "", "on-click": "hyprctl dispatch exit" }
+/* Workspaces */
+#workspaces button {
+    padding: 0 6px;
+    color: #8e95b3;
+}
+#workspaces button.active {
+    color: #00ffff;
+    border-bottom: 2px solid #00ffff; /* Garis bawah aktif */
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+/* Info Text (Putih Bersih) */
+#clock, #cpu, #memory, #disk, #pulseaudio, #network, #tray, #window {
+    color: #ffffff;
+    padding: 0 6px;
+}
+
+#clock { color: #89b4fa; }
+
+/* Power Button (Compact) */
+#custom-power {
+    color: #ff5555;
+    background: rgba(255, 85, 85, 0.15);
+    border-radius: 8px;
+    padding: 0 8px;
+    margin-left: 8px;
+}
+#custom-lock, #custom-reboot, #custom-quit {
+    padding: 0 6px;
+    color: #dddddd;
+}
+#custom-lock:hover, #custom-reboot:hover, #custom-quit:hover {
+    color: #00ffff;
 }
