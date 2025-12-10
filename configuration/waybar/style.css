@@ -1,60 +1,43 @@
 * {
-  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
-  font-size: 13px;
-  color: #e8eef8;
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 15px;
 }
+window#waybar { background: transparent; }
 
-window#waybar {
-  background: rgba(18, 24, 36, 0.48);
-  backdrop-filter: blur(18px);
-  border-radius: 16px;
-  padding: 6px 12px;
-  margin: 12px 18px; /* membuat effect melayang */
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-/* modules layout */
-#custom-launcher,
-#custom-perf,
-#pulseaudio,
-#network,
-#battery,
-#custom-weather,
-#clock {
-  padding: 6px 14px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.06);
-  margin: 0 8px;
-}
-
-/* workspace pills */
-#workspaces button {
-  padding: 6px 10px;
-  margin: 0 4px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.04);
-  color: #cfe9ff;
+/* Modul Utama (Pill Shape & Glass) */
+#custom-launcher, #workspaces, #clock, #pulseaudio, #network, #battery {
+    background: rgba(30, 30, 46, 0.85);
+    color: #cdd6f4;
+    padding: 0 16px;
+    margin: 0 4px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 #workspaces button.active {
-  background: rgba(64, 150, 255, 0.40);
-  box-shadow: 0 0 10px rgba(64,150,255,0.5);
-  color: #ffffff;
+    color: #33ccff;
+    background: rgba(51, 204, 255, 0.15);
+    border-radius: 15px;
 }
 
-/* perf tooltip box style (waybar shows tooltip) */
-.tooltip {
-  background: rgba(10, 12, 18, 0.9);
-  color: #e6eefc;
-  border-radius: 8px;
-  padding: 8px;
-  font-size: 12px;
+/* --- POWER DRAWER --- */
+#custom-power {
+    background: #ff5555;
+    color: #ffffff;
+    padding: 0 14px;
+    border-radius: 20px;
+    margin-left: 5px;
 }
-
-/* clock emphasis */
-#clock {
-  background: rgba(90,170,255,0.35);
-  color: #000;
-  font-weight: 700;
-  border-radius: 12px;
+/* Isi Laci */
+#custom-lock, #custom-reboot, #custom-quit {
+    background: rgba(30, 30, 46, 0.9);
+    color: #cdd6f4;
+    padding: 0 15px;
+    margin-right: 5px;
+    border-radius: 20px;
 }
+#custom-lock:hover { background: #33ccff; color: #000; }
+#custom-quit:hover { background: #ff0000; color: #fff; }
