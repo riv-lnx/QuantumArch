@@ -82,7 +82,7 @@
             "transition-left-to-right": false
         },
         "modules": [
-            "custom/power", // Tombol Utama (Handle)
+            "custom/power",
             "custom/lock",
             "custom/reboot",
             "custom/quit"
