@@ -11,16 +11,11 @@ window#waybar {
 
 /* --- CONTAINER: DARK TINTED GLASS (KACA FILM GELAP) --- */
 .modules-left, .modules-center, .modules-right {
-    /* BACKGROUND: Hitam 60% Transparan. 
-       Ini membuat tulisan putih PASTI terbaca, tapi wallpaper tetap tembus. */
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6); /* Gelap Transparan */
     
-    /* BORDER GLOSSY (PENTING UNTUK EFEK 3D) */
-    /* Garis putih terang di atas (efek pantulan lampu) */
+    /* Border Glossy */
     border-top: 1px solid rgba(255, 255, 255, 0.4); 
-    /* Garis Cyan di bawah (Tema Quantum) */
-    border-bottom: 2px solid rgba(0, 255, 255, 0.6); 
-    /* Samping tipis */
+    border-bottom: 2px solid rgba(0, 255, 255, 0.5); 
     border-left: 1px solid rgba(255, 255, 255, 0.1);
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     
@@ -28,8 +23,9 @@ window#waybar {
     padding: 4px 12px;
     margin-top: 8px; 
     
-    /* Shadow kuat agar bar terlihat "Melayang" dari wallpaper */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    /* PERBAIKAN SHADOW: */
+    /* Shadow hitam tajam, tidak melebar kemana-mana */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
 .modules-left { margin-left: 12px; }
