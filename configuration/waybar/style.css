@@ -3,74 +3,94 @@
     border-radius: 0;
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
-    font-size: 15px;
+    font-size: 14px;
+    min-height: 0;
 }
 
 window#waybar {
     background: transparent;
 }
 
-/* Modul Utama (Pill Shape & Glass) */
-#custom-startmenu, #custom-launcher, #workspaces, #clock, #pulseaudio, #network, #battery {
-    background: rgba(30, 30, 46, 0.85);
-    color: #cdd6f4;
-    padding: 0 16px;
-    margin: 0 4px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: 0.2s ease;
+tooltip {
+    background: #1e1e2e;
+    border-radius: 10px;
+    border: 1px solid #33ccff;
 }
 
-/* Workspaces Active */
-#workspaces button.active {
-    color: #33ccff;
-    background: rgba(51, 204, 255, 0.15);
-    border-radius: 15px;
-}
-
-/* --- START MENU APPLE ICON --- */
-#custom-startmenu {
-    font-size: 20px;
-    padding: 0 12px;
-    margin-left: 5px;
-    margin-right: 8px;
-    color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-#custom-startmenu:hover { background-color: rgba(255, 255, 255, 0.12); }
-
-/* --- POWER DRAWER --- */
-#custom-power {
-    background: #ff5555;
-    color: #ffffff;
-    padding: 0 14px;
-    border-radius: 20px;
-    margin-left: 5px;
-    transition: 0.2s ease;
-}
-
-/* Isi Drawer */
-.child-power #custom-lock,
-.child-power #custom-reboot,
-.child-power #custom-quit {
-    background: rgba(30, 30, 46, 0.9);
+#custom-launcher, #workspaces, #clock, #pulseaudio, #network, #battery {
+    background-color: rgba(30, 30, 46, 0.85);
     color: #cdd6f4;
     padding: 0 15px;
-    margin-right: 5px;
+    margin: 0 4px;
     border-radius: 20px;
-    transition: 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
-.child-power #custom-lock:hover { background: #33ccff; color: #000; }
-.child-power #custom-reboot:hover { background: #ffd700; color: #000; }
-.child-power #custom-quit:hover { background: #ff0000; color: #fff; }
+#workspaces button {
+    padding: 0 5px;
+    color: #cdd6f4;
+}
 
-/* Smooth Drawer Overlay */
-.group-power.drawer {
-    backdrop-filter: blur(8px);
-    background: rgba(40, 40, 50, 0.85);
+#workspaces button.active {
+    color: #33ccff;
+    background-color: rgba(51, 204, 255, 0.15);
+    border-radius: 15px;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+}
+
+#battery.charging {
+    color: #a6e3a1;
+}
+
+#battery.critical:not(.charging) {
+    color: #f38ba8;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-power {
+    background-color: #ff5555;
+    color: #ffffff;
+    padding: 0 16px;
+    margin-left: 5px;
     border-radius: 20px;
+    box-shadow: 0 0 8px rgba(255, 85, 85, 0.4);
+}
+
+#custom-lock, #custom-reboot, #custom-quit {
+    background-color: rgba(30, 30, 46, 0.95);
+    color: #cdd6f4;
+    padding: 0 15px;
+    margin-right: 4px;
+    border-radius: 20px;
+}
+
+#custom-lock:hover {
+    background-color: #33ccff;
+    color: #000000;
+}
+
+#custom-reboot:hover {
+    background-color: #fab387;
+    color: #000000;
+}
+
+#custom-quit:hover {
+    background-color: #ff5555;
+    color: #ffffff;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
 }
