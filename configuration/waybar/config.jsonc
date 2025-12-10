@@ -5,22 +5,26 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 44,
+    "height": 42, // Tinggi disesuaikan agar proporsional
     "modules-left": [
         "custom/launch_wofi",
         "hyprland/workspaces",
         "cpu",
-        "memory"
+        "memory",
+        "disk" // Tambahan: Monitor Disk untuk Developer
     ],
     "modules-center": [
-        "clock"
+        "hyprland/window" // Tambahan: Menampilkan Judul Window Aktif
     ],
     "modules-right": [
+        "clock",
         "pulseaudio",
         "network",
         "tray",
         "group/power"
     ],
+
+    // --- MODULE CONFIGURATION ---
 
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -28,61 +32,74 @@
         "on-click": "activate",
         "format": "{icon}",
         "persistent_workspaces": {
-            "1": [], "2": [], "3": [], "4": []
-        },
-        "format-icons": {
-            "active": "\uf111",
-            "default": "\uf10c"
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": []
         }
     },
-
+    
+    // --- LOGO QUANTUM (Q) ---
     "custom/launch_wofi": {
-        "format": "Q",
-        "tooltip": "Quantum Launcher",
-        "on-click": "~/.config/waybar/scripts/starmenu.sh"
+        "format": " Q ", 
+        "on-click": "~/.config/waybar/scripts/startmenu.sh",
+        "tooltip": false
+    },
+
+    // --- WINDOW TITLE (Agar tengah tidak kosong) ---
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "separate-outputs": true
     },
 
     "cpu": {
         "interval": 10,
         "format": " {usage}%",
-        "max-length": 10
+        "max-length": 10,
+        "on-click": "kitty -e htop"
     },
-
     "memory": {
         "interval": 30,
-        "format": " {used}%",
-        "max-length": 10
+        "format": " {}%",
+        "max-length": 10,
+        "on-click": "kitty -e htop"
     },
-
+    "disk": {
+        "interval": 30,
+        "format": " {percentage_used}%",
+        "path": "/"
+    },
     "clock": {
-        "format": "{:%H:%M    %d %b}",
+        "format": "  {:%d %b  %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
-
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-muted": " Muted",
         "on-click": "pavucontrol",
-        "format-icons": { "default": ["", "", ""] }
+        "format-icons": {
+            "default": ["", "", ""]
+        }
     },
-
     "network": {
-        "format-wifi": " {signalStrength}%",
+        "format-wifi": "  {signalStrength}%",
         "format-ethernet": " Connected",
         "format-disconnected": "⚠ Offline",
-        "tooltip-format": "{essid}"
+        "tooltip-format": "{essid}",
+        "on-click": "nm-connection-editor"
     },
-
     "tray": {
         "icon-size": 18,
         "spacing": 10
     },
 
+    // --- POWER DRAWER ---
     "group/power": {
         "orientation": "inherit",
         "drawer": {
-            "transition-duration": 300,
-            "children-class": "child-power",
+            "transition-duration": 500,
+            "children-class": "not-power",
             "transition-left-to-right": false
         },
         "modules": [
@@ -92,7 +109,6 @@
             "custom/quit"
         ]
     },
-
     "custom/power": {
         "format": "",
         "tooltip": false,
@@ -106,7 +122,7 @@
     "custom/reboot": {
         "format": "",
         "tooltip": false,
-        "on-click": "systemctl reboot"
+        "on-click": "reboot"
     },
     "custom/quit": {
         "format": "",
