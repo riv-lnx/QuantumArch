@@ -1,98 +1,59 @@
 {
-  "layer": "top",
-  "position": "top",
-  "gtk-layer-shell": true,
-  "height": 44,
-  "margin": "10 14",
-  "exclusive": true,
+    "layer": "top",
+    "position": "top",
+    "height": 44,
+    "margin-top": 10,
+    "margin-left": 10,
+    "margin-right": 10,
+    "modules-left": ["custom/launcher", "hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "network", "battery", "group/power"],
 
-  "modules-left": [
-    "custom/launcher",
-    "hyprland/workspaces"
-  ],
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": { "active": "\uf111", "default": "\uf10c" }
+    },
+    "custom/launcher": {
+        "format": "\uf179",
+        "on-click": "wofi --show drun",
+        "tooltip": false
+    },
+    "clock": { "format": "{:%H:%M  \uf073  %a, %d %b}" },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "\uf6a9",
+        "format-icons": { "default": ["\uf027", "\uf028"] },
+        "on-click": "pavucontrol"
+    },
+    "network": {
+        "format-wifi": "\uf1eb",
+        "format-ethernet": "\uf796",
+        "format-disconnected": "\uf071",
+        "tooltip-format": "{essid}"
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"]
+    },
 
-  "modules-center": [
-    "clock"
-  ],
-
-  "modules-right": [
-    "custom/perf",
-    "pulseaudio",
-    "network",
-    "battery"
-  ],
-
-  /* Launcher = klik membuka wofi */
-  "custom/launcher": {
-    "format": "\uf303",
-    "tooltip": "Open Launcher",
-    "on-click": "~/.config/waybar/startmenu.sh",
-    "interval": 0
-  },
-
-  /* Workspaces dengan icon \ufxxx */
-  "hyprland/workspaces": {
-    "disable-scroll": false,
-    "all-outputs": true,
-    "format": "{icon}",
-    "on-click": "activate",
-    "persistent-workspaces": { "1": [], "2": [], "3": [], "4": [], "5": [] },
-    "format-icons": {
-      "default": "\uf111",
-      "active": "\uf192",
-      "urgent": "\uf06a"
-    }
-  },
-
-  /* Performance module:
-     - exec -> perf.sh mengeluarkan JSON {"text":"\uf201","tooltip":"CPU: 12%\\nRAM: 2048MB"}
-     - tooltip akan tampil pada hover -> memenuhi "performance hover" */
-  "custom/perf": {
-    "exec": "~/.config/waybar/perf.sh",
-    "return-type": "json",
-    "interval": 3,
-    "format": "{text}",
-    "tooltip": true
-  },
-
-  /* Pulseaudio (volume) */
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": "\uf6a9 Muted",
-    "on-click": "pavucontrol",
-    "scroll-step": 5,
-    "format-icons": {
-      "default": ["\uf026","\uf027","\uf028"]
-    }
-  },
-
-  /* Network */
-  "network": {
-    "format-wifi": "\uf1eb {signalStrength}%",
-    "format-ethernet": "\uf796 Wired",
-    "format-disconnected": "\uf071 Disconnected",
-    "tooltip-format": "{essid} • {ifname} • {ipaddr}"
-  },
-
-  /* Battery */
-  "battery": {
-    "format": "{icon} {capacity}%",
-    "format-charging": "\uf0e7 {capacity}%",
-    "format-icons": ["\uf244","\uf243","\uf242","\uf241","\uf240"]
-  },
-
-  /* Weather (exec -> weather.sh mengeluarkan JSON {"text":"...","icon":"\uf185","full":"..."} ) */
-  "custom/weather": {
-    "exec": "~/.config/waybar/weather.sh",
-    "return-type": "json",
-    "format": "{icon} {text}",
-    "tooltip-format": "{full}",
-    "interval": 900
-  },
-
-  /* Clock (icon \uf017) */
-  "clock": {
-    "format": "\uf017  {:%H:%M  %a, %d %b}",
-    "tooltip": false
-  }
+    // --- DRAWER POWER MENU ---
+    "group/power": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "child-power",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/power", 
+            "custom/lock",
+            "custom/reboot",
+            "custom/quit"
+        ]
+    },
+    "custom/power": { "format": "\uf011", "tooltip": false },
+    "custom/lock": { "format": "\uf023", "tooltip": false, "on-click": "loginctl lock-session" },
+    "custom/reboot": { "format": "\uf021", "tooltip": false, "on-click": "systemctl reboot" },
+    "custom/quit": { "format": "\uf011", "tooltip": false, "on-click": "systemctl poweroff" }
 }
