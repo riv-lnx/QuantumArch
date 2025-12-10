@@ -1,7 +1,8 @@
+/* --- GLOBAL RESET --- */
 * {
     border: none;
     font-family: "JetBrainsMono Nerd Font", "Roboto", sans-serif;
-    font-size: 13px;
+    font-size: 12px; /* Ukuran font ideal untuk bar tipis */
     font-weight: bold;
 }
 
@@ -9,92 +10,78 @@ window#waybar {
     background: transparent;
 }
 
-/* --- CONTAINER: DARK TINTED GLASS (KACA FILM GELAP) --- */
+/* --- CONTAINER UTAMA (SLIM & CLEAN) --- */
 .modules-left, .modules-center, .modules-right {
-    background-color: rgba(0, 0, 0, 0.6); /* Gelap Transparan */
+    /* Background Gelap Transparan (Elegant Dark) */
+    background-color: rgba(20, 20, 30, 0.85);
+
+    /* Border Glossy Minimalis */
+    border-top: 1px solid rgba(255, 255, 255, 0.2);       /* Highlight tipis di atas */
+    border-bottom: 2px solid rgba(0, 255, 255, 0.6);      /* Garis Quantum Cyan tegas di bawah */
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+
+    /* Ukuran & Posisi */
+    border-radius: 12px;  /* Radius tidak terlalu bulat, lebih 'tech' */
+    padding: 2px 10px;    /* PADDING KECIL agar bar tipis */
+    margin-top: 5px;      /* Jarak 'floating' kecil (5px) */
     
-    /* Border Glossy */
-    border-top: 1px solid rgba(255, 255, 255, 0.4); 
-    border-bottom: 2px solid rgba(0, 255, 255, 0.5); 
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    
-    border-radius: 20px;
-    padding: 4px 12px;
-    margin-top: 8px; 
-    
-    /* PERBAIKAN SHADOW: */
-    /* Shadow hitam tajam, tidak melebar kemana-mana */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    /* Shadow Hitam Tajam (Clean look, no blur bleed) */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
 }
 
-.modules-left { margin-left: 12px; }
-.modules-right { margin-right: 12px; }
+/* Margin kiri kanan agar tidak menempel layar */
+.modules-left { margin-left: 10px; }
+.modules-right { margin-right: 10px; }
 
-/* --- TEXT SETTINGS --- */
+/* --- MODUL --- */
+
+/* Logo Quantum */
+#custom-launch_wofi {
+    color: #00ffff;
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0 8px;
+    margin-right: 8px;
+    font-size: 13px;
+}
+
+/* Workspaces */
+#workspaces button {
+    padding: 0 6px;
+    color: #8e95b3;
+}
+#workspaces button.active {
+    color: #00ffff;
+    border-bottom: 2px solid #00ffff; /* Garis bawah aktif */
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+/* Info Text (Putih Bersih) */
 #clock, #cpu, #memory, #disk, #pulseaudio, #network, #tray, #window {
     color: #ffffff;
-    /* Sedikit bayangan hitam agar teks tajam */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
     padding: 0 6px;
 }
 
-/* --- LOGO QUANTUM (Q) --- */
-#custom-launch_wofi {
-    color: #00ffff;
-    font-size: 16px;
-    background: rgba(0, 255, 255, 0.1);
-    border: 1px solid rgba(0, 255, 255, 0.5); /* Border lebih tegas */
-    border-radius: 15px;
-    padding: 0 12px 0 8px;
-    margin-right: 10px;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); /* Glow Effect */
-}
+#clock { color: #89b4fa; }
 
-/* --- WORKSPACES --- */
-#workspaces button {
-    padding: 0 8px;
-    color: #aaaaaa;
-    transition: all 0.3s ease;
-}
-
-#workspaces button.active {
-    color: #00ffff;
-    text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
-    border-bottom: 2px solid #00ffff;
-    background: rgba(255, 255, 255, 0.1); /* Highlight kotak */
-    border-radius: 8px;
-}
-
-#workspaces button:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-}
-
-/* --- MODUL TENGAH (WINDOW TITLE) --- */
-#window {
-    font-weight: 600;
-    color: #eeeeee;
-}
-
-/* --- CLOCK --- */
-#clock {
-    color: #89b4fa; /* Biru langit */
-    font-weight: 900;
-}
-
-/* --- POWER DRAWER --- */
+/* Power Button (Compact) */
 #custom-power {
     color: #ff5555;
-    background: rgba(255, 0, 0, 0.15);
-    border: 1px solid rgba(255, 0, 0, 0.4);
-    border-radius: 12px;
-    padding: 0 10px;
-    margin-left: 10px;
+    background: rgba(255, 85, 85, 0.15);
+    border-radius: 8px;
+    padding: 0 8px;
+    margin-left: 8px;
+}
+#custom-lock, #custom-reboot, #custom-quit {
+    padding: 0 6px;
+    color: #dddddd;
 }
 #custom-lock:hover, #custom-reboot:hover, #custom-quit:hover {
     color: #00ffff;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
 }
