@@ -5,54 +5,62 @@
     "margin-top": 10,
     "margin-left": 10,
     "margin-right": 10,
-    "modules-left": ["custom/startmenu", "custom/launcher", "hyprland/workspaces"],
+    "spacing": 0,
+    "modules-left": ["custom/launcher", "hyprland/workspaces"],
     "modules-center": ["clock"],
     "modules-right": ["pulseaudio", "network", "battery", "group/power"],
 
     "hyprland/workspaces": {
         "format": "{icon}",
         "on-click": "activate",
-        "format-icons": { "active": "\uf111", "default": "\uf10c" }
-    },
-
-    "custom/startmenu": {
-        "format": "\uf5d2",
-        "tooltip": false,
-        "on-click": "~/.config/waybar/scripts/startmenu.sh"
+        "all-outputs": true,
+        "format-icons": {
+            "active": "",
+            "default": ""
+        }
     },
 
     "custom/launcher": {
-        "format": "\uf179",
+        "format": "",
         "on-click": "wofi --show drun",
         "tooltip": false
     },
 
-    "clock": { "format": "{:%H:%M  \uf073  %a, %d %b}" },
+    "clock": {
+        "format": "{:%H:%M    %a, %d %b}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
 
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": "\uf6a9",
-        "format-icons": { "default": ["\uf027", "\uf028"] },
+        "format-muted": " Muted",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
         "on-click": "pavucontrol"
     },
 
     "network": {
-        "format-wifi": "\uf1eb {signalStrength}%",
-        "format-ethernet": "\uf796",
-        "format-disconnected": "\uf071",
-        "tooltip-format": "{essid}"
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "",
+        "tooltip-format": "{essid} ({signalStrength}%)"
     },
 
     "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
         "format": "{icon} {capacity}%",
-        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"]
+        "format-charging": " {capacity}%",
+        "format-icons": ["", "", "", "", ""]
     },
 
-    // --- DRAWER POWER MENU ---
     "group/power": {
         "orientation": "inherit",
         "drawer": {
-            "transition-duration": 300,
+            "transition-duration": 500,
             "children-class": "child-power",
             "transition-left-to-right": false
         },
@@ -64,8 +72,23 @@
         ]
     },
 
-    "custom/power": { "format": "\uf585", "tooltip": false },  // icon berbeda dari shutdown
-    "custom/lock": { "format": "\uf023", "tooltip": false, "on-click": "loginctl lock-session" },
-    "custom/reboot": { "format": "\uf021", "tooltip": false, "on-click": "systemctl reboot" },
-    "custom/quit": { "format": "\uf011", "tooltip": false, "on-click": "systemctl poweroff" }
+    "custom/power": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/lock": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "loginctl lock-session"
+    },
+    "custom/reboot": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "systemctl reboot"
+    },
+    "custom/quit": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "systemctl poweroff"
+    }
 }
