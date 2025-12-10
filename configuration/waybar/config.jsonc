@@ -5,7 +5,7 @@
     "margin-top": 10,
     "margin-left": 10,
     "margin-right": 10,
-    "modules-left": ["custom/launcher", "hyprland/workspaces"],
+    "modules-left": ["custom/startmenu", "custom/launcher", "hyprland/workspaces"],
     "modules-center": ["clock"],
     "modules-right": ["pulseaudio", "network", "battery", "group/power"],
 
@@ -14,24 +14,35 @@
         "on-click": "activate",
         "format-icons": { "active": "\uf111", "default": "\uf10c" }
     },
+
+    "custom/startmenu": {
+        "format": "\uf5d2",
+        "tooltip": false,
+        "on-click": "~/.config/waybar/scripts/startmenu.sh"
+    },
+
     "custom/launcher": {
         "format": "\uf179",
         "on-click": "wofi --show drun",
         "tooltip": false
     },
+
     "clock": { "format": "{:%H:%M  \uf073  %a, %d %b}" },
+
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-muted": "\uf6a9",
         "format-icons": { "default": ["\uf027", "\uf028"] },
         "on-click": "pavucontrol"
     },
+
     "network": {
-        "format-wifi": "\uf1eb",
+        "format-wifi": "\uf1eb {signalStrength}%",
         "format-ethernet": "\uf796",
         "format-disconnected": "\uf071",
         "tooltip-format": "{essid}"
     },
+
     "battery": {
         "format": "{icon} {capacity}%",
         "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"]
@@ -41,18 +52,19 @@
     "group/power": {
         "orientation": "inherit",
         "drawer": {
-            "transition-duration": 500,
+            "transition-duration": 300,
             "children-class": "child-power",
             "transition-left-to-right": false
         },
         "modules": [
-            "custom/power", 
+            "custom/power",
             "custom/lock",
             "custom/reboot",
             "custom/quit"
         ]
     },
-    "custom/power": { "format": "\uf011", "tooltip": false },
+
+    "custom/power": { "format": "\uf585", "tooltip": false },  // icon berbeda dari shutdown
     "custom/lock": { "format": "\uf023", "tooltip": false, "on-click": "loginctl lock-session" },
     "custom/reboot": { "format": "\uf021", "tooltip": false, "on-click": "systemctl reboot" },
     "custom/quit": { "format": "\uf011", "tooltip": false, "on-click": "systemctl poweroff" }
