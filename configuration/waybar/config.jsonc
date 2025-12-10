@@ -1,80 +1,97 @@
 {
     "layer": "top",
     "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
     "height": 44,
-    "margin-top": 10,
-    "margin-left": 10,
-    "margin-right": 10,
-    "spacing": 0,
-    "modules-left": ["custom/launcher", "hyprland/workspaces"],
-    "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "battery", "group/power"],
+    "modules-left": [
+        "custom/launch_wofi",
+        "hyprland/workspaces",
+        "cpu",
+        "memory"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "tray",
+        "group/power"
+    ],
 
     "hyprland/workspaces": {
-        "format": "{icon}",
-        "on-click": "activate",
+        "disable-scroll": true,
         "all-outputs": true,
-        "format-icons": {
-            "active": "",
-            "default": ""
+        "on-click": "activate",
+        "format": "{icon}",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": []
         }
     },
-
-    "custom/launcher": {
+    
+    "custom/launch_wofi": {
         "format": "",
-        "on-click": "wofi --show drun",
+        "on-click": "~/.config/waybar/scripts/startmenu.sh",
         "tooltip": false
     },
 
-    "clock": {
-        "format": "{:%H:%M    %a, %d %b}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%",
+        "max-length": 10
     },
-
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "max-length": 10
+    },
+    "clock": {
+        "format": "{:%H:%M    %d %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-muted": " Muted",
+        "on-click": "pavucontrol",
         "format-icons": {
             "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
+        }
     },
-
     "network": {
-        "format-wifi": "",
-        "format-ethernet": "",
-        "format-disconnected": "",
-        "tooltip-format": "{essid} ({signalStrength}%)"
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": " Connected",
+        "format-disconnected": "⚠ Offline",
+        "tooltip-format": "{essid}"
     },
-
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-icons": ["", "", "", "", ""]
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
     },
 
     "group/power": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 500,
-            "children-class": "child-power",
+            "children-class": "not-power",
             "transition-left-to-right": false
         },
         "modules": [
-            "custom/power",
+            "custom/power", // Tombol Utama (Handle)
             "custom/lock",
             "custom/reboot",
             "custom/quit"
         ]
     },
-
     "custom/power": {
         "format": "",
-        "tooltip": false
+        "tooltip": false,
+        "on-click": "kitty --class floating -e ~/.config/waybar/scripts/powermenu.sh"
     },
     "custom/lock": {
         "format": "",
@@ -82,13 +99,13 @@
         "on-click": "loginctl lock-session"
     },
     "custom/reboot": {
-        "format": "",
+        "format": "",
         "tooltip": false,
-        "on-click": "systemctl reboot"
+        "on-click": "reboot"
     },
     "custom/quit": {
         "format": "",
         "tooltip": false,
-        "on-click": "systemctl poweroff"
+        "on-click": "hyprctl dispatch exit"
     }
 }
