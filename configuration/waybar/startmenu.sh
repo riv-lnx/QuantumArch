@@ -1,18 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
+# Script untuk membuka App Launcher (Wofi)
 
-echo "=== QuantumArch Start Menu ==="
-echo "1) Shutdown"
-echo "2) Reboot"
-echo "3) Lock"
-echo "4) Logout"
-echo "5) Cancel"
-echo -n "Choose: "
-read choice
-
-case $choice in
-    1) systemctl poweroff ;;
-    2) systemctl reboot ;;
-    3) loginctl lock-session ;;
-    4) hyprctl dispatch exit ;;
-    *) exit 0 ;;
-esac
+if pgrep -x "wofi" > /dev/null
+then
+    pkill -x wofi
+else
+    # Pastikan wofi terinstall
+    wofi --show drun --allow-images --prompt "Quantum Apps..."
+fi
