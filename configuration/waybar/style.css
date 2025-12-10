@@ -1,7 +1,7 @@
 * {
     border: none;
     font-family: "JetBrainsMono Nerd Font", "Roboto", sans-serif;
-    font-size: 13px; /* Ukuran font sedikit dikecilkan agar elegan */
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -9,91 +9,84 @@ window#waybar {
     background: transparent;
 }
 
-/* --- GLOSSY GLASS CONTAINER --- */
+/* Modules left, center, right */
 .modules-left, .modules-center, .modules-right {
-    /* Background Gradient: Gelap di bawah, agak terang di atas (efek cahaya pantulan) */
-    background: linear-gradient(180deg, rgba(30, 30, 46, 0.7) 0%, rgba(20, 20, 30, 0.9) 100%);
-    
-    /* Border Glossy: Putih transparan di atas, Cyan di bawah */
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(0, 255, 255, 0.3); /* Cyan Glow bawah */
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-    
-    border-radius: 20px; /* Pill Shape */
-    padding: 2px 10px;
-    margin-top: 6px; /* Floating margin */
-    
-    /* Neon Shadow halus */
-    box-shadow: 0 0 8px rgba(0, 255, 255, 0.1);
+    background: rgba(30,30,46,0.85);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 5px 15px;
+    margin-top: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    backdrop-filter: blur(6px);
+    transition: 0.2s ease;
 }
 
+/* Left margin/right margin */
 .modules-left { margin-left: 10px; }
 .modules-right { margin-right: 10px; }
 
-/* --- LOGO QUANTUM (Q) --- */
+/* Launcher Q */
 #custom-launch_wofi {
-    color: #00ffff; /* Cyan Quantum */
-    font-size: 16px;
-    background: rgba(0, 255, 255, 0.1);
-    border-radius: 15px;
-    padding: 0 10px 0 6px;
-    margin-right: 10px;
-    border: 1px solid rgba(0, 255, 255, 0.2);
-}
-
-/* --- WORKSPACES --- */
-#workspaces button {
-    padding: 0 6px;
-    color: #a6adc8;
-    transition: all 0.3s ease;
-}
-#workspaces button.active {
-    color: #00ffff; /* Active Cyan */
-    text-shadow: 0 0 5px #00ffff; /* Teks menyala */
-    border-bottom: 2px solid #00ffff;
-}
-#workspaces button:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-}
-
-/* --- WINDOW TITLE (Tengah) --- */
-#window {
-    color: #cdd6f4;
-    font-weight: normal;
-}
-
-/* --- INFO MODULES --- */
-#clock, #cpu, #memory, #disk, #pulseaudio, #network, #tray {
-    color: #cdd6f4;
-    padding: 0 8px;
-}
-
-#clock {
-    color: #89b4fa; /* Biru Muda */
-    font-weight: 800;
-}
-
-/* --- POWER DRAWER --- */
-#custom-power {
-    color: #ff5555;
-    background-color: rgba(255, 85, 85, 0.1);
-    border: 1px solid rgba(255, 85, 85, 0.3);
+    color: #00ffff;
+    font-size: 18px;
+    font-weight: bold;
+    background: rgba(0,255,255,0.08);
     border-radius: 15px;
     padding: 0 12px;
-    margin-left: 10px;
-    box-shadow: 0 0 5px rgba(255, 85, 85, 0.2);
+    margin-right: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
 }
+#custom-launch_wofi:hover { background: rgba(0,255,255,0.15); }
 
-#custom-lock, #custom-reboot, #custom-quit {
+/* Workspaces */
+#workspaces button {
+    padding: 0 6px;
     color: #ffffff;
-    padding: 0 10px;
+    border-radius: 12px;
+}
+#workspaces button.active {
+    color: #00ffff;
+    box-shadow: 0 0 8px #00ffff;
+    background: rgba(0,255,255,0.15);
+}
+#workspaces button:hover {
+    background: rgba(0,255,255,0.2);
+    border-radius: 12px;
 }
 
-#custom-lock:hover, #custom-reboot:hover, #custom-quit:hover {
-    color: #00ffff;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+/* Right Modules */
+#clock, #cpu, #memory, #pulseaudio, #network, #tray {
+    color: #e0e0e0;
+    background: rgba(50,50,70,0.8);
+    padding: 0 12px;
+    margin: 0 5px;
+    border-radius: 18px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
 }
+
+/* Power drawer */
+#custom-power {
+    color: #ff5555;
+    background: rgba(255,85,85,0.2);
+    border-radius: 20px;
+    padding: 0 15px;
+    margin-left: 10px;
+    transition: 0.2s ease;
+}
+.child-power #custom-lock,
+.child-power #custom-reboot,
+.child-power #custom-quit {
+    background: rgba(30,30,46,0.9);
+    color: #cdd6f4;
+    padding: 0 14px;
+    margin-right: 5px;
+    border-radius: 18px;
+    transition: 0.2s ease;
+}
+.child-power #custom-lock:hover { background: #33ccff; color: #000; }
+.child-power #custom-reboot:hover { background: #ffd700; color: #000; }
+.child-power #custom-quit:hover { background: #ff0000; color: #fff; }
+
+/* Tray icons spacing */
+#tray { display: flex; gap: 10px; }
