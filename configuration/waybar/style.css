@@ -5,23 +5,42 @@
     font-weight: bold;
     font-size: 15px;
 }
-window#waybar { background: transparent; }
+
+window#waybar {
+    background: transparent;
+}
 
 /* Modul Utama (Pill Shape & Glass) */
-#custom-launcher, #workspaces, #clock, #pulseaudio, #network, #battery {
+#custom-startmenu, #custom-launcher, #workspaces, #clock, #pulseaudio, #network, #battery {
     background: rgba(30, 30, 46, 0.85);
     color: #cdd6f4;
     padding: 0 16px;
     margin: 0 4px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.2s ease;
 }
 
+/* Workspaces Active */
 #workspaces button.active {
     color: #33ccff;
     background: rgba(51, 204, 255, 0.15);
     border-radius: 15px;
 }
+
+/* --- START MENU APPLE ICON --- */
+#custom-startmenu {
+    font-size: 20px;
+    padding: 0 12px;
+    margin-left: 5px;
+    margin-right: 8px;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+#custom-startmenu:hover { background-color: rgba(255, 255, 255, 0.12); }
 
 /* --- POWER DRAWER --- */
 #custom-power {
@@ -30,14 +49,28 @@ window#waybar { background: transparent; }
     padding: 0 14px;
     border-radius: 20px;
     margin-left: 5px;
+    transition: 0.2s ease;
 }
-/* Isi Laci */
-#custom-lock, #custom-reboot, #custom-quit {
+
+/* Isi Drawer */
+.child-power #custom-lock,
+.child-power #custom-reboot,
+.child-power #custom-quit {
     background: rgba(30, 30, 46, 0.9);
     color: #cdd6f4;
     padding: 0 15px;
     margin-right: 5px;
     border-radius: 20px;
+    transition: 0.2s ease;
 }
-#custom-lock:hover { background: #33ccff; color: #000; }
-#custom-quit:hover { background: #ff0000; color: #fff; }
+
+.child-power #custom-lock:hover { background: #33ccff; color: #000; }
+.child-power #custom-reboot:hover { background: #ffd700; color: #000; }
+.child-power #custom-quit:hover { background: #ff0000; color: #fff; }
+
+/* Smooth Drawer Overlay */
+.group-power.drawer {
+    backdrop-filter: blur(8px);
+    background: rgba(40, 40, 50, 0.85);
+    border-radius: 20px;
+}
