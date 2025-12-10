@@ -1,23 +1,18 @@
 #!/usr/bin/env bash
-# Start menu: opens wofi drun; includes power submenu implemented inline
-# If user chooses "Power", show power options.
 
-CHOICE=$(printf "Launch apps\nPower options\nLock screen" | wofi --dmenu --location 3 --prompt "Quantum Menu" --width 380)
-case "$CHOICE" in
-  "Launch apps")
-    wofi --show drun
-    ;;
-  "Power options")
-    P=$(printf "Lock\nLogout\nSuspend\nReboot\nShutdown" | wofi --dmenu --prompt "Power")
-    case "$P" in
-      "Lock") hyprlock ;;
-      "Logout") hyprctl dispatch exit 0 ;;
-      "Suspend") systemctl suspend ;;
-      "Reboot") systemctl reboot ;;
-      "Shutdown") systemctl poweroff ;;
-    esac
-    ;;
-  "Lock screen")
-    hyprlock
-    ;;
+echo "=== QuantumArch Start Menu ==="
+echo "1) Shutdown"
+echo "2) Reboot"
+echo "3) Lock"
+echo "4) Logout"
+echo "5) Cancel"
+echo -n "Choose: "
+read choice
+
+case $choice in
+    1) systemctl poweroff ;;
+    2) systemctl reboot ;;
+    3) loginctl lock-session ;;
+    4) hyprctl dispatch exit ;;
+    *) exit 0 ;;
 esac
