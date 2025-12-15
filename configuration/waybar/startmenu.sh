@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Script untuk membuka App Launcher (Wofi)
 
 if pgrep -x "wofi" > /dev/null
