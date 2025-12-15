@@ -1,0 +1,71 @@
+/* =========================================================
+   QuantumArch WOFI Theme
+   Sonoma BlueGlass • Developer Edition
+   ========================================================= */
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 12px;
+}
+
+/* ===== Window ===== */
+window {
+    background: rgba(12, 12, 14, 0.55);
+    border-radius: 18px;
+    border: 2px solid rgba(51, 204, 255, 0.35);
+    padding: 14px;
+}
+
+/* ===== Input ===== */
+#input {
+    margin: 10px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(51, 204, 255, 0.35);
+    background-color: rgba(0, 0, 0, 0.30);
+    color: #e9fefe;
+}
+
+#input:focus {
+    border: 1px solid rgba(51, 204, 255, 0.75);
+}
+
+/* ===== Inner Box ===== */
+#inner-box {
+    margin: 6px;
+    padding: 6px;
+    background: transparent;
+}
+
+/* ===== Scroll ===== */
+#scroll {
+    margin-top: 8px;
+}
+
+/* ===== Entry (list item) ===== */
+#entry {
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    margin-bottom: 6px;
+}
+
+/* ===== Entry Text ===== */
+#entry label {
+    color: #d7e1ff;
+}
+
+/* ===== Entry Icon ===== */
+#entry image {
+    margin-right: 10px;
+}
+
+/* ===== Selected Entry ===== */
+#entry:selected {
+    background: rgba(51, 204, 255, 0.22);
+    border: 1px solid rgba(51, 204, 255, 0.55);
+}
+
+#entry:selected label {
+    color: #e9fefe;
+}
