@@ -1,0 +1,15 @@
+width=40%
+height=55%
+location=center
+show=drun
+prompt=Search…
+filter_rate=100
+allow_markup=true
+insensitive=true
+term=kitty
+
+font=JetBrainsMono Nerd Font 12
+icon_theme=Papirus-Dark
+show_icons=true
+drun_display_generic=true
+gtk_dark=true
